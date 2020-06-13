@@ -14,8 +14,8 @@ class UserSeeder extends Seeder
     {
         //
         User::insert([
-          'nama'         => 'admin',
-          'email'        => 'admin@perumda.com',
+          'nama'         => 'adminx',
+          'email'        => 'adminx@gmail.com',
           'password'     => Hash::make('123456'),
           'hak_akses'    => 80,
           'bidang_usaha' => ''

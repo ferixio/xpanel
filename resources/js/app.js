@@ -2,13 +2,13 @@ import flatpickr from "flatpickr";
 require('flatpickr/dist/flatpickr.min.css');
 require('flatpickr/dist/flatpickr.min.js');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-const app = new Vue({
-    el: '#app',
-});
+// const app = new Vue({
+//     el: '#app',
+// });
 
 flatpickr('.x-date', {
   altInput: true,
@@ -61,13 +61,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
 
-    btnHapus.forEach((btn)=>{
-      btn.onclick =  ()=>{
-        UIkit.modal.confirm('Apakah anda ingin menghapus data ini?',  ()=>{
-          alert('oke')
-        })
-      }
-    });
+    // btnHapus.forEach((btn)=>{
+    //   btn.onclick =  ()=>{
+    //     UIkit.modal.confirm('Apakah anda ingin menghapus data ini?',  ()=>{
+    //       alert('oke')
+    //     })
+    //   }
+    // });
     
     btnEdit.forEach((btn)=>{
       btn.onclick =  ()=>{
@@ -173,7 +173,7 @@ function viewGridData(){
       link.classList.add('uk-transition-slide-bottom');
     });
 
-    xGrid.classList.add('uk-child-width-1-4@l' , 'uk-child-width-1-3@m' , 'uk-child-width-1-2' );
+    xGrid.classList.add('uk-child-width-1-4@l' , 'uk-child-width-1-3@m' , 'uk-child-width-1-2@s'  );
 }
 
 function viewListData(){
@@ -197,7 +197,7 @@ function viewListData(){
       link.classList.remove('uk-transition-slide-bottom');
     });
 
-    xGrid.classList.remove('uk-child-width-1-4@l' , 'uk-child-width-1-3@m' , 'uk-child-width-1-2' );
+    xGrid.classList.remove('uk-child-width-1-4@l' , 'uk-child-width-1-3@m' , 'uk-child-width-1-2@s');
 }
 
 

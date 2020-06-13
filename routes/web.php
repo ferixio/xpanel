@@ -7,24 +7,17 @@ Route::get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-
-Route::group(['middleware' => 'auth'], function() {
+Route::view('/', 'welcome');
+Route::view('dasboard', 'DashboardController@index');
+Route::group(['middleware' => 'auth', 'prefix' => 'xpanel'], function() {
     Route::get('/', 'DashboardController@index');
-    Route::get('/dashboard', 'DashboardController@index');
+    Route::resource('article', 'ArticleController')->parameters(['article'=>'content']);
+    
     Route::group(['prefix' => 'master'], function () {
-      Route::get('/bidang-usaha', 'BidangUsahaController@index');
-      Route::get('/akun-perkiraan', 'AkunPerkiraanController@index');
       Route::get('/pengguna', 'PenggunaController@index');
       Route::get('/supplier', 'EntityController@supplier');
       Route::get('/customer', 'EntityController@customer');
     });
 
-    Route::group(['prefix' => 'proses'], function () {
-        Route::get('kas-masuk', 'JurnalController@kasMasuk');
-        Route::get('kas-keluar', 'JurnalController@kasKeluar');
-        Route::get('jurnal-umum', 'JurnalController@jurnalUmum');
-        Route::get('jurnal-koreksi', 'JurnalController@jurnalKoreksi');
-    });
-
-    
+    Route::post('upload','Uploadcontroller@index');
 });

@@ -15,7 +15,7 @@
 }
 
 * {
-    box-sizing: border-box;
+    // box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
@@ -97,6 +97,7 @@ textarea {
 
     &[placeholder] {
         font-size: 13px !important;
+        color:#686868 !important;
     }
 }
 
@@ -109,7 +110,7 @@ input{
   background-color: #ffffff !important;
 }
 
-button,
+.uk-button,
 .uk-button-default,
 .x-button-blue,
 .x-button-green,
@@ -264,6 +265,19 @@ button,
     font-size: 14px;
     line-height: 19px;
     color: var(--x-grey);
+}
+
+.note-btn{
+  
+  border-radius: 2px !important;
+  margin: 0 2px !important;
+}
+.note-btn-primary{
+  color: rgb(77, 77, 77) !important;
+  padding: 5px 10px !important;
+}
+.note-editor .note-toolbar .note-style .dropdown-style h1{
+  font-size: 2.2rem !important;
 }
 
 .x-card {
@@ -895,6 +909,15 @@ div.uk-first-column{
       }
       &-menu{
         background-image: url('../img/icon/menu.svg');
+      }
+      &-article{
+        background-image: url('../img/icon/paper2.svg');
+      }
+      &-product{
+        background-image: url('../img/icon/shopping-bag.svg');
+      }
+      &-page{
+        background-image: url('../img/icon/page.svg');
       }
     }
 
