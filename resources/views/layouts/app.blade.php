@@ -43,35 +43,29 @@
                
               </li>
               <li>
-                <a href="#" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-masterdata x-margin-auto"></div>
+                <a href="{{ url('xpanel/article') }}" class="uk-flex uk-flex-column">
+                  <div class="x-icon x-icon-18 x-icon-article x-margin-auto"></div>
                   <div>Article</div>
                 </a>
               </li>
               <li>
-                <a href="#" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-masterdata x-margin-auto"></div>
+                <a href="{{ url('xpanel/product')}}" class="uk-flex uk-flex-column">
+                  <div class="x-icon x-icon-18 x-icon-product x-margin-auto"></div>
                   <div>Product</div>
                 </a>
               </li>
               <li>
                 <a href="{{ url('dashboard') }}" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-proses x-margin-auto"></div>
-                  <div>Proses Data</div>
+                  <div class="x-icon x-icon-18 x-icon-page x-margin-auto"></div>
+                  <div>Pages</div>
                   
                 </a>
               </li>
-              <li>
-                <a href="{{ url('dashboard') }}" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-laporan x-margin-auto"></div>
-                  <div>Laporan</div>
-                  
-                </a>
-              </li>
+              
               <li>
                 <a href="{{ url('dashboard') }}" class="uk-flex uk-flex-column">
                   <div class="x-icon x-icon-18 x-icon-pengaturan x-margin-auto"></div>
-                  <div>Pengaturan</div>
+                  <div>Setting</div>
                   
                 </a>
               </li>
@@ -98,6 +92,8 @@
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('vendor/cleave/cleave.min.js') }}"></script>
+    
    
 </body>
 </html>

@@ -234,12 +234,12 @@ input {
 }
 
 .uk-pagination li {
-  padding: 1.8px 6px !important;
+  padding: 1.8px 7px !important;
 }
 
 .uk-pagination li.uk-active {
   background-color: var(--color-theme);
-  border-radius: 100%;
+  border-radius: 5px;
 }
 
 .uk-pagination li.uk-active a,

@@ -10,30 +10,56 @@
       if ( Request::segment(4) == 'edit') {
         $edit = true;
       }
+
+      $page_category = 'article';
+      if (Request::segment(2) == 'product') {
+        $page_category= 'product';
+      }
   @endphp
   
-  <h4  class="uk-text-bold uk-margin-remove-top" >{{ $edit == true ? 'Perbarui' : 'Buat'}} Artikel</h4>
+    <h4  class="uk-text-bold uk-margin-remove-top uk-text-capitalize" >{{ $edit == true ? 'Perbarui' : 'Buat'}} {{ $page_category }}</h4>
   <form id="form-berita" enctype="multipart/form-data" accept-charset='utf-8-sig'>
       @csrf
      
       <input type="hidden" name="id" value="{{ $edit == true ?  $content['id'] : ''}}">
 
      
-      <input type="text" class="uk-input" id="title" name="title" placeholder="Masukan judul berita disini."  required value="{{ $edit == true ?  $content['title'] : ''}}">
+      <input type="text" class="uk-input" id="title" name="title" placeholder="Masukan {{ $page_category == 'article' ? 'judul article / berita ' : ' nama product ' }} disini."  required value="{{ $edit == true ?  $content['title'] : ''}}">
       <p id="err-title" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('title'){{$message}}@enderror</p>
       
      
       <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Masukan deskripsi singkat disini." maxlength="150">{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
       <p id="err-short_description" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('short_description'){{$message}}@enderror</p>
       
-      <label for="" class="uk-text-bold x-font-12">Isi Article /  Berita</label>
+      <label for="" class="uk-text-bold x-font-12">Deskripsi lengkap tentang {{ $page_category}}</label>
       <div  id="summernote"></div>
+
+
+      @if ($page_category == 'product')
+        
+       
+          <div class="uk-margin uk-flex uk-child-width-1-2@m" >
+
+            <div>
+              <label for="" class="x-font-12 ">Harga Produk</label>
+              <input type="text" class="uk-input angka" id="price" name="price" placeholder="Harga Product"  value="{{ $edit == true ?  $content['price'] : 0}}" >
+                <p id="err-price" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price'){{$message}}@enderror</p>
+            </div>
+            <div class="uk-margin-small-left">
+              <label for="" class="x-font-12 ">Harga Promo</label>
+              <input type="text" class="uk-input angka" id="price_promo" name="price_promo" placeholder="Harga Product"  value="{{ $edit == true ?  $content['price_promo'] : 0}}" >
+                <p id="err-price_promo" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price_promo'){{$message}}@enderror</p>
+            </div>
+  
+          </div>
+
+     @endif
 
       <input type="text" class="uk-input" id="tags" name="tags" placeholder="#Hastag" maxlength="100" value="{{ $edit == true ?  $content['tags'] : ''}}" >
       <p id="err-tags" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('tags'){{$message}}@enderror</p>
       <label for="" class="x-font-12 uk-text-italic">Pisahkan dengan tanda tagar (#) untuk setiap hastag.</label>
       
-     <div class="uk-margin">
+      <div class="uk-margin">
         <img id="x-thumb" src="{{ $edit == true ?  asset('storage/'.$content['image_path']) : ''}}" alt="" class="x-thumb" width="100px">   
         <div>
           <div class="uk-text-bold x-font-14">Pilih file gambar sebagai thumbnails</div>
@@ -41,6 +67,8 @@
           <p id="err-image_path" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('image_path'){{$message}}@enderror</p> 
         </div>
      </div>
+     
+     
   
       <button class="uk-button uk-margin x-white-text x-font-14" id="btn-simpan" type="submit">Simpan</button>
     </form>
@@ -54,7 +82,7 @@
 <script>
     let image      = '';
     let content    = `{!! $edit == true ?  $content['description'] : '' !!}`;
-    let url        = `{{ url('xpanel/article') }}`;
+    let url        = `{{ url("xpanel/$page_category") }}`;
     let summernote = $('#summernote');
     let hash       = '';
     initThumb();
@@ -129,8 +157,13 @@
         var content =   summernote.summernote('code');
         var frmData = new FormData(this);
         var proses = `{{ $edit == true ? 'edit' : 'add' }}`;
+        var price = $('#price').val() == '' ? 0 : $('#price').val().replace(/[,]/gi,'');
+        var price_promo = $('#price_promo').val() == '' ? 0 : $('#price_promo').val().replace(/[,]/gi,'');
         frmData.append('description', content.replace(/[\u200B-\u200D\uFEFF]/gi ,''));
         frmData.append('proses' , proses);
+        frmData.append('price' , price);
+        frmData.append('price_promo' , price_promo);
+
         $.ajax({
           method: 'POST',
           url: url,
@@ -160,8 +193,6 @@
           var inputFile = document.querySelector('#image_path');
           
             var img1 = document.querySelector('#x-thumb');
-          
-          
             inputFile.addEventListener('change',(e)=>{
                 if (inputFile.value !== ''){
                   var reader = new FileReader()

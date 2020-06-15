@@ -3408,7 +3408,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var xGridIcon = document.querySelectorAll('.x-grid-icon');
   var xGridIconLink = document.querySelectorAll('.x-grid-icon a');
   var viewMode = (_localStorage$getItem = localStorage.getItem('modeViewData')) !== null && _localStorage$getItem !== void 0 ? _localStorage$getItem : '';
-  var viewSidebar = (_localStorage$getItem2 = localStorage.getItem('modeViewSidebar')) !== null && _localStorage$getItem2 !== void 0 ? _localStorage$getItem2 : ''; //  ============ cek element x grid ======================
+  var viewSidebar = (_localStorage$getItem2 = localStorage.getItem('modeViewSidebar')) !== null && _localStorage$getItem2 !== void 0 ? _localStorage$getItem2 : '';
+  $('.angka').each(function (index, el) {
+    var cleave = new Cleave(el, {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand'
+    });
+  }); //  ============ cek element x grid ======================
 
   if (document.body.contains(xGrid)) {
     if (viewMode == 'grid') {
@@ -3425,15 +3431,14 @@ document.addEventListener('DOMContentLoaded', function () {
     btnList.onclick = function () {
       localStorage.setItem('modeViewData', 'list');
       viewListData();
-    }; // btnHapus.forEach((btn)=>{
-    //   btn.onclick =  ()=>{
-    //     UIkit.modal.confirm('Apakah anda ingin menghapus data ini?',  ()=>{
-    //       alert('oke')
-    //     })
-    //   }
-    // });
+    };
 
-
+    $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
+    $('.active').addClass('uk-active');
+    $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
+    $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
+    $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
+    $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
     btnEdit.forEach(function (btn) {
       btn.onclick = function () {
         modalTitle.innerHTML = "Perbarui Data";

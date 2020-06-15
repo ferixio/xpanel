@@ -18,13 +18,34 @@ class ArticleController extends Controller
     {
         //
         
-        $data = Content::orderBy('created_at','desc');
         $keyword =  request()->keyword;
-        if ( $keyword !== null) {
-          $data = $data->where('title' , 'LIKE' , "%$keyword%");
+        $paginate =  request()->paginate !== null ? request()->paginate : 12;
+        $sort =  request()->sort;
+        $data = Content::orderBy('created_at','desc');
+        $page_category = request()->segment(2) == 'article' ? 'article' : 'product';
+
+
+        if ($sort == 'asc') {
+          $data = Content::orderBy('created_at','asc');
         }
 
-        $data = $data->paginate(10);
+        if ($page_category == 'article') {
+          $data =  $data->Where('category' , 'article');
+        }else{
+          $data =  $data->Where('category' , 'product');
+        }
+
+        if ( $keyword !== null) {
+          $data = $data
+          ->orWhere('title' , 'LIKE' , "%$keyword%")
+          ->orWhere('tags' , 'LIKE' , "%$keyword%")
+          ->orWhere('publisher' , 'LIKE' , "%$keyword%");
+        }
+       
+        
+        
+        
+        $data = $data->paginate($paginate);
         return view('admin/article/index', compact('data' , 'keyword'));
       }
       
@@ -49,13 +70,16 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         //
-        
-        
+        // $request['price'] = str_replace(',' ,'' ,  $request['price']);
+        // $request['price_promo'] = str_replace(',' ,'' ,  $request['price_promo']);
+        // dd($request['price']);
         $data =  $request->validate([
           'title'             => 'required',
           'short_description' => 'sometimes',
           'description'       => 'sometimes',
           'tags'              => 'sometimes',
+          'price'             => 'sometimes|numeric',
+          'price_promo'       => 'sometimes|numeric',
         ]);
 
         $data['slug']      = str_replace(' ','-', $data['title']);
@@ -69,7 +93,7 @@ class ArticleController extends Controller
         }
         
 
-        if ($request->hasFile('image_thumb')) {
+        if ($request->hasFile('image_path')) {
           $request->validate([
             'image_path' => 'file|max:10000|image'
           ]);

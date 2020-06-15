@@ -17,6 +17,9 @@ flatpickr('.x-date', {
     defaultDate: Date.now()
 });
 
+
+
+
 // custom js
 // document.querySelector(`a[href="${window.location.href}"]`).parentNode.classList.add('active');
 
@@ -40,6 +43,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   let xGridIconLink = document.querySelectorAll('.x-grid-icon a');
   let viewMode      = localStorage.getItem('modeViewData') ?? '';
   let viewSidebar   = localStorage.getItem('modeViewSidebar') ?? '';
+
+  $('.angka').each(function (index, el) {
+    var cleave = new Cleave(el, {
+      numeral: true,
+      numeralThousandsGroupStyle: 'thousand'
+    });
+  });
+  
   
 
 //  ============ cek element x grid ======================
@@ -60,14 +71,14 @@ document.addEventListener('DOMContentLoaded',()=>{
       viewListData()
     }
 
+    $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
+    $('.active').addClass('uk-active');
 
-    // btnHapus.forEach((btn)=>{
-    //   btn.onclick =  ()=>{
-    //     UIkit.modal.confirm('Apakah anda ingin menghapus data ini?',  ()=>{
-    //       alert('oke')
-    //     })
-    //   }
-    // });
+    $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
+    $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
+    $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
+    $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
+
     
     btnEdit.forEach((btn)=>{
       btn.onclick =  ()=>{

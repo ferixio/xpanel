@@ -12,6 +12,7 @@ Route::view('dasboard', 'DashboardController@index');
 Route::group(['middleware' => 'auth', 'prefix' => 'xpanel'], function() {
     Route::get('/', 'DashboardController@index');
     Route::resource('article', 'ArticleController')->parameters(['article'=>'content']);
+    Route::resource('product', 'ArticleController')->parameters(['product'=>'content']);
     
     Route::group(['prefix' => 'master'], function () {
       Route::get('/pengguna', 'PenggunaController@index');

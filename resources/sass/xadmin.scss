@@ -234,10 +234,10 @@ input{
 }
 
 .uk-pagination li{
-  padding:1.8px 6px !important;
+  padding:1.8px 7px !important;
   &.uk-active{
     background-color: var(--color-theme);
-    border-radius: 100%;
+    border-radius: 5px;
    a , span{
     color:#ffffff !important;
    }
