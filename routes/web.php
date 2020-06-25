@@ -8,7 +8,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::view('/', 'welcome');
-Route::view('dasboard', 'DashboardController@index');
+Route::view('dashboard', 'DashboardController@index');
 Route::group(['middleware' => 'auth', 'prefix' => 'xpanel'], function() {
     Route::get('/', 'DashboardController@index');
     Route::resource('article', 'ArticleController')->parameters(['article'=>'content']);
@@ -20,5 +20,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'xpanel'], function() {
       Route::get('/customer', 'EntityController@customer');
     });
 
-    Route::post('upload','Uploadcontroller@index');
+    Route::post('upload','UploadController@index');
 });

@@ -6,6 +6,7 @@ use App\Models\Content;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -18,33 +19,31 @@ class ArticleController extends Controller
     {
         //
         
-        $keyword =  request()->keyword;
-        $paginate =  request()->paginate !== null ? request()->paginate : 12;
-        $sort =  request()->sort;
-        $data = Content::orderBy('created_at','desc');
+        $keyword       = request()->keyword;
+        $paginate      = request()->paginate !== null ? request()->paginate : 12;
+        $sort          = request()->sort;
         $page_category = request()->segment(2) == 'article' ? 'article' : 'product';
+        $data          = Content::orderBy('created_at','desc');
 
+        if ( $keyword !== null) {
+          
+          $data = $data
+          ->Where('title' , 'like' , '%'.$keyword.'%')
+          ->orWhere('tags' , 'like' , '%'.$keyword.'%')
+          ->orWhere('description' , 'like' , '%'.$keyword.'%');
+        }
+
+        if ($page_category == 'article') {
+          $data =  $data->Where('category_page' , 'article');
+        }else{
+          $data =  $data->Where('category_page' , 'product');
+        }
 
         if ($sort == 'asc') {
           $data = Content::orderBy('created_at','asc');
         }
 
-        if ($page_category == 'article') {
-          $data =  $data->Where('category' , 'article');
-        }else{
-          $data =  $data->Where('category' , 'product');
-        }
-
-        if ( $keyword !== null) {
-          $data = $data
-          ->orWhere('title' , 'LIKE' , "%$keyword%")
-          ->orWhere('tags' , 'LIKE' , "%$keyword%")
-          ->orWhere('publisher' , 'LIKE' , "%$keyword%");
-        }
        
-        
-        
-        
         $data = $data->paginate($paginate);
         return view('admin/article/index', compact('data' , 'keyword'));
       }
@@ -73,6 +72,7 @@ class ArticleController extends Controller
         // $request['price'] = str_replace(',' ,'' ,  $request['price']);
         // $request['price_promo'] = str_replace(',' ,'' ,  $request['price_promo']);
         // dd($request['price']);
+        
         $data =  $request->validate([
           'title'             => 'required',
           'short_description' => 'sometimes',
@@ -80,31 +80,46 @@ class ArticleController extends Controller
           'tags'              => 'sometimes',
           'price'             => 'sometimes|numeric',
           'price_promo'       => 'sometimes|numeric',
+          'image_thumb'       => 'sometimes'
         ]);
 
-        $data['slug']      = str_replace(' ','-', $data['title']);
-        $data['publisher'] = auth()->user()->nama;
-        $data['category']  = request()->segment(2);
-        $data['updated_at'] =Carbon::now();
+        $data['slug']          = str_replace(' ','-', $data['title']);
+        $data['publisher']     = auth()->user()->nama;
+        $data['category_page'] = request()->segment(2);
+        $data['updated_at']    = Carbon::now();
+        $data['tags'] = str_replace(' ','',$data['tags']);
+        $request['proses'] == 'add' ? $data['created_at'] = Carbon::now() :'';
         
-        if ($request['proses'] == 'add') {
-          $data['created_at'] =Carbon::now();
-          
+        if ($request['proses'] == 'edit') {
+          $imageName = Content::select('image_path')->Where('id',$request['id'])->get();
+          $imageOld = explode("|", $imageName[0]['image_path']);
+          foreach ($imageOld as $image) {
+            Storage::delete("public/$image");
+          }
         }
         
-
-        if ($request->hasFile('image_path')) {
+        if ($request->hasFile('fl-upload2')) {
           $request->validate([
-            'image_path' => 'file|max:10000|image'
+            'fl-upload2.*' => 'file|max:10000|image'
           ]);
-
-          $data['image_path'] = $request['image_path']->store('uploads' , 'public');       
+          $files =  $request['fl-upload2'];
+          $img_thumb = '';
+          foreach ($files as $file) {
+                       
+            if ($file->getClientOriginalName() == str_replace('uploads/','',$request['image_thumb'])) {
+              $img_thumb = $image_path[] = $file->store('uploads' , 'public');
+            }else{
+              $image_path[] = $file->store('uploads' , 'public');
+            }
+          }
+          $data['image_path']  = implode('|' , $image_path);
+          $data['image_thumb'] = $img_thumb;
         }
 
         Content::updateOrCreate(
           ['id'=>$request['id']],
           $data
-          );
+        );
       
     }
 
@@ -117,6 +132,7 @@ class ArticleController extends Controller
     public function show(Content $content)
     {
         //
+        
     }
 
     /**

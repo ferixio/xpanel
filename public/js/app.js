@@ -3547,8 +3547,16 @@ document.addEventListener('DOMContentLoaded', function () {
       link.classList.remove('uk-transition-slide-bottom');
     });
     xGrid.classList.remove('uk-child-width-1-4@l', 'uk-child-width-1-3@m', 'uk-child-width-1-2@s');
-  } // =================== end function custom ================
+  }
 
+  $(document).ajaxSend(function () {
+    $('#loading').html(" <span class=\"uk-position-center\" uk-spinner></span>");
+    $('#loading').addClass('uk-overlay uk-overlay-primary uk-position-cover');
+  });
+  $(document).ajaxComplete(function () {
+    $('#loading').html('');
+    $('#loading').removeClass('uk-overlay uk-overlay-primary uk-position-cover');
+  }); // =================== end function custom ================
 });
 
 /***/ }),

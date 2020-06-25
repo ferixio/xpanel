@@ -88,7 +88,7 @@
             </div>
         </section>
 
-        <div id="spinner" uk-spinner class="uk-position-center" style="display:none"></div>
+        <div id="loading" class=""></div>
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script>

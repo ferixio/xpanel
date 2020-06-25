@@ -33,7 +33,8 @@ if (Request::segment(2) == 'product') {
     @forelse ($data as $content)
         <div>
           <div class="x-grid-item uk-box-shadow-small x-list uk-flex uk-flex-middle  uk-transition-toggle" tabindex="0">
-            <div  style="height:100px;width:100px;background-image:url({{ is_null($content['image_path']) || empty($content['image_path']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_path']) }});background-size:cover;" class="uk-border-rounded uk-margin uk-width-auto"></div>
+            
+            <div  style="height:100px;width:100px;background-image:url({{ is_null($content['image_thumb']) || empty($content['image_thumb']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_thumb']) }});background-size:cover;" class="uk-border-rounded uk-margin uk-width-auto"></div>
 
             
             
@@ -71,19 +72,7 @@ if (Request::segment(2) == 'product') {
     <div class="uk-width-expand">
       
       {{ $data->links() }}
-      {{-- <ul class="uk-pagination uk-flex uk-flex-right x-font-12">
-       
-        <li><a href="{{ $data->links()->prev_page_url }}"><span uk-pagination-previous></span></a></li>
-        <li><a href="#">1</a></li>
-        <li class="uk-disabled"><span>...</span></li>
-        
-        <li><a href="#">6</a></li>
-        <li class="uk-active"><span>7</span></li>
-        <li><a href="#">8</a></li>
-        <li class="uk-disabled"><span>...</span></li>
-        <li><a href="#">20</a></li>
-        <li><a href=""><span uk-pagination-next></span></a></li>
-    </ul> --}}
+      
     </div>
   </div>
   <script>

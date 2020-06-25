@@ -21,7 +21,9 @@ class CreateContentsTable extends Migration
             $table->text('short_description')->nullable();
             $table->text('tags')->nullable();
             $table->text('image_path')->nullable();
-            $table->string('category', 100)->nullable()->default(''); // example =  article , product
+            $table->text('image_thumb')->nullable();
+            $table->string('category_page', 100)->nullable()->default(''); // example =  article , product
+            $table->string('category', 100)->nullable()->default(''); 
             $table->string('publisher', 100)->nullable()->default('');
             $table->boolean('status_published')->default(true);
             $table->double('price', 20, 2)->default(0);

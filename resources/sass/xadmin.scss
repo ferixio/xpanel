@@ -22,8 +22,29 @@
 
 body {
     overflow-x: hidden;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
 
 }
+
+#x-drop{
+  width: 100%;
+  height:200px;
+  border: 2px dashed grey;
+  display:grid;
+  place-content:center;
+}
+.preview-img{
+  margin:10px;
+  width:100px;
+  height:100px;
+  background-size:cover;
+  background-position:center;
+  flex-grow:1;
+  min-width:100px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
 
 .x-grey {
     background: var(--xgrey) !important;

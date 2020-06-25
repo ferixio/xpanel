@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   let viewMode      = localStorage.getItem('modeViewData') ?? '';
   let viewSidebar   = localStorage.getItem('modeViewSidebar') ?? '';
 
+  
   $('.angka').each(function (index, el) {
     var cleave = new Cleave(el, {
       numeral: true,
@@ -210,6 +211,20 @@ function viewListData(){
 
     xGrid.classList.remove('uk-child-width-1-4@l' , 'uk-child-width-1-3@m' , 'uk-child-width-1-2@s');
 }
+
+$(document).ajaxSend(()=>{
+  $('#loading').html(` <span class="uk-position-center" uk-spinner></span>`);
+  $('#loading').addClass('uk-overlay uk-overlay-primary uk-position-cover');
+});
+$(document).ajaxComplete(()=>{
+  $('#loading').html('');
+  $('#loading').removeClass('uk-overlay uk-overlay-primary uk-position-cover');
+});
+
+
+
+
+
 
 
 // =================== end function custom ================
