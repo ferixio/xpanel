@@ -150,6 +150,7 @@ input{
     }
 }
 
+
 .x-button-blue {
     background: #1E87F0 !important;
     color: white !important;
@@ -599,11 +600,20 @@ div.uk-first-column{
       }
 
       &delay{
+        &-1{
+          transition-delay: .1s;
+        }
         &-2{
           transition-delay: .2s;
         }
+        &-3{
+          transition-delay: .3s;
+        }
         &-4{
           transition-delay: .4s;
+        }
+        &-5{
+          transition-delay: .5s;
         }
         &-6{
           transition-delay: .6s;
@@ -883,6 +893,10 @@ div.uk-first-column{
       height: 20px;
       width: 20px;
       background-repeat: no-repeat;
+      &-12{
+        height: 12px;
+        width: 12px;
+      }
       &-18{
         height: 18px;
         width: 18px;
@@ -911,7 +925,7 @@ div.uk-first-column{
 
 
       &-dashboard{
-        background-image: url('../img/icon/dashboad.svg');
+        background-image: url('../img/icon/dashboard.svg');
       }
       &-masterdata{
         background-image: url('../img/icon/masterdata.svg');
@@ -939,6 +953,9 @@ div.uk-first-column{
       }
       &-page{
         background-image: url('../img/icon/page.svg');
+      }
+      &-eye{
+        background-image: url('../img/icon/eye2.svg');
       }
     }
 

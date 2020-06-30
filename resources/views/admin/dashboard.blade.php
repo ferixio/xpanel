@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <h5 class="title uk-text-uppercase">Dashboard</h5>
+  <h5 class="title uk-text-uppercase">Overview</h5>
 
   <div class="uk-flex uk-child-width-1-1 uk-child-width-1-2@l uk-grid-medium uk-position-relative uk-padding" uk-grid>
 

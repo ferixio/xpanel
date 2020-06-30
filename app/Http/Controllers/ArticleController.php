@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Content;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +57,9 @@ class ArticleController extends Controller
       public function create()
       {
         //
-        return view('admin/article/create');
+        
+        $categories = Category::Where('jenis' , 'category-'.request()->segment(2))->orderBy('name' , 'asc')->get();
+        return view('admin/article/create' ,  compact('categories'));
        
     }
 
@@ -71,8 +74,7 @@ class ArticleController extends Controller
         //
         // $request['price'] = str_replace(',' ,'' ,  $request['price']);
         // $request['price_promo'] = str_replace(',' ,'' ,  $request['price_promo']);
-        // dd($request['price']);
-        
+        // dd($request);
         $data =  $request->validate([
           'title'             => 'required',
           'short_description' => 'sometimes',
@@ -80,14 +82,19 @@ class ArticleController extends Controller
           'tags'              => 'sometimes',
           'price'             => 'sometimes|numeric',
           'price_promo'       => 'sometimes|numeric',
-          'image_thumb'       => 'sometimes'
+          'image_thumb'       => 'sometimes',
+          'category'          => 'sometimes'
         ]);
 
-        $data['slug']          = str_replace(' ','-', $data['title']);
+        $data['slug']          = strtolower(str_replace(' ','-', $data['title']));
         $data['publisher']     = auth()->user()->nama;
         $data['category_page'] = request()->segment(2);
         $data['updated_at']    = Carbon::now();
-        $data['tags'] = str_replace(' ','',$data['tags']);
+        $data['tags']          = str_replace(' ','',$data['tags']);
+        if ($request['category']) {
+          $data['category'] = implode($request['category'] , '|');
+        }
+        
         $request['proses'] == 'add' ? $data['created_at'] = Carbon::now() :'';
         
         if ($request['proses'] == 'edit') {
@@ -144,8 +151,9 @@ class ArticleController extends Controller
     public function edit(Content $content)
     {
         //
-      
-        return view('admin/article/create' , compact('content'));
+        
+        $categories = Category::Where('jenis' , 'category-'.request()->segment(2))->orderBy('name' , 'asc')->get();
+        return view('admin/article/create' , compact('content' , 'categories'));
     }
 
     /**
@@ -158,7 +166,35 @@ class ArticleController extends Controller
     public function update(Request $request, Content $content)
     {
         //
-        dd(request()->segment(2));
+        $data = $content;
+        unset($data['id']);
+        if ($request['txt-with-image'] !== 'with') {
+          $data['image_path'] = '';
+          $data['image_thumb'] = '';
+        }else{
+          $image_path =  explode('|',$data['image_path']);
+          $image_thumb = $data['image_thumb'];
+          $new_image_path = [];
+          $new_image_thumb = '';
+          foreach ($image_path as $image ) {
+            $file_name =  md5($image. time()).'.jpeg';
+            Storage::copy('public/'.$image , 'public/uploads/'.$file_name);
+           
+            if ($image == $image_thumb) {
+              $new_image_thumb = 'uploads/'. $file_name ;
+            }
+            $new_image_path[] = 'uploads/'. $file_name;
+          }
+          $data['image_path'] = implode('|',$new_image_path);
+          $data['image_thumb'] = $new_image_thumb;
+        }
+
+        $data['created_at'] = $data['updated_at'] =  Carbon::now() ;
+        
+        Content::insert($data->getAttributes());
+
+        return redirect()->back();
+        
     }
 
     /**
@@ -170,6 +206,25 @@ class ArticleController extends Controller
     public function destroy(Content $content)
     {
         //
-      $content->delete();
+        $imageName = '';
+      if (isset(request()->data)) {
+        $content_filter = Content::WhereIn('id' , request()->data)->get();
+        foreach ($content_filter as $row) {
+           $image_path = explode('|' , $row['image_path']);
+            foreach ( $image_path as $image) {
+              Storage::delete("public/$image");
+            }
+          }
+        Content::WhereIn('id' , request()->data)->delete();
+      }else{
+        $image_path = explode('|' , $content['image_path']);
+        foreach ( $image_path as $image) {
+          Storage::delete("public/$image");
+        }
+        $content->delete();
+      }
+
+     
+      
     }
 }

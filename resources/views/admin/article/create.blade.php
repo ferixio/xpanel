@@ -3,9 +3,14 @@
 
   @php
       $edit = false;
+      $categoryChecked = '';
       if ( Request::segment(4) == 'edit') {
         $edit = true;
+        $categoryChecked = $content['category'];
+
       }
+      $id_selected = '0';
+
 
       $page_category = 'article';
       if (Request::segment(2) == 'product') {
@@ -13,60 +18,64 @@
       }
   @endphp
   
-  <h4  class="uk-text-bold uk-margin-remove-top uk-text-capitalize" >{{ $edit == true ? 'Perbarui' : 'Buat'}} {{ $page_category }}</h4>
+  <h4  class="uk-text-bold uk-margin-remove-top uk-text-capitalize" >{{ $edit == true ? 'Edit' : 'New'}} {{ $page_category }}</h4>
   <form id="form-berita" enctype="multipart/form-data" accept-charset='utf-8-sig'>
       @csrf
-     
       <input type="hidden" name="id" value="{{ $edit == true ?  $content['id'] : ''}}">
-
-     
-      <input type="text" class="uk-input" id="title" name="title" placeholder="Masukan {{ $page_category == 'article' ? 'judul article / berita ' : ' nama product ' }} disini."  required value="{{ $edit == true ?  $content['title'] : ''}}">
+      <div class="dropzone uk-margin-small"> 
+        <div id="preview" class="uk-child-width-1-2@xs uk-child-width-1-4@m uk-flex uk-flex-center uk-child-width-1-2 uk-padding-small uk-padding-remove-horizontal" uk-grid uk-lightbox="animation: slide"></div>
+          <div id="x-drop"  class="uk-text-center x-font-14"> 
+            <span uk-icon="icon:  cloud-upload"></span>
+            Drop image in here or  <span id="trigger-upload"  style="cursor:pointer"><b>Click Here</b></span></div>
+          
+          
+      </div>
+      <input type="text" class="uk-input" id="title" name="title" placeholder="Enter {{ $page_category == 'article' ? 'title of article ' : ' name of product ' }} in here"  required value="{{ $edit == true ?  $content['title'] : ''}}">
       <p id="err-title" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('title'){{$message}}@enderror</p>
       
      
-      <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Masukan deskripsi singkat disini." maxlength="150">{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
+      <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Enter short description in here" maxlength="150">{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
       <p id="err-short_description" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('short_description'){{$message}}@enderror</p>
       
-      <label for="" class=" x-font-12">Deskripsi lengkap tentang {{ $page_category}}</label>
+      <label for="" class=" x-font-12">Write full description of {{ $page_category}} in below</label>
       <div  id="summernote"></div>
 
 
       @if ($page_category == 'product')
-        
-       
-          <div class="uk-margin uk-flex uk-child-width-1-2@m" >
+            <div class="uk-margin uk-flex uk-child-width-1-2@m" >
+              <div>
+                <label for="" class="x-font-12 ">Price of Product</label>
+                <input type="text" class="uk-input angka" id="price" name="price" placeholder="Price"  value="{{ $edit == true ?  $content['price'] : 0}}" >
+                  <p id="err-price" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price'){{$message}}@enderror</p>
+              </div>
+              <div class="uk-margin-small-left">
+                <label for="" class="x-font-12 ">Price Promo</label>
+                <input type="text" class="uk-input angka" id="price_promo" name="price_promo" placeholder="Price Promo"  value="{{ $edit == true ?  $content['price_promo'] : 0}}" >
+                  <p id="err-price_promo" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price_promo'){{$message}}@enderror</p>
+              </div>
 
-            <div>
-              <label for="" class="x-font-12 ">Harga Produk</label>
-              <input type="text" class="uk-input angka" id="price" name="price" placeholder="Harga Product"  value="{{ $edit == true ?  $content['price'] : 0}}" >
-                <p id="err-price" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price'){{$message}}@enderror</p>
             </div>
-            <div class="uk-margin-small-left">
-              <label for="" class="x-font-12 ">Harga Promo</label>
-              <input type="text" class="uk-input angka" id="price_promo" name="price_promo" placeholder="Harga Product"  value="{{ $edit == true ?  $content['price_promo'] : 0}}" >
-                <p id="err-price_promo" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('price_promo'){{$message}}@enderror</p>
+
+      @endif
+      <div class="uk-child-width-1-2@m uk-grid-small uk-padding-small" uk-grid>
+        <div>
+          <div class="uk-width-1-1 uk-child-widt-1-1 uk-margin-small x-font-14">
+            <div class="x-font-12 uk-margin-small-bottom">Choose category</div>
+            <div class="uk-box-shadow-small uk-margin-remove uk-overflow-auto" style="height:300px !important;">
+              <div id="list-category" class=" uk-padding-small "></div>
             </div>
-  
+
           </div>
-
-     @endif
-
-      <input type="text" class="uk-input" id="tags" name="tags" placeholder="#Hastag" maxlength="100" value="{{ $edit == true ?  $content['tags'] : ''}}" >
-      <p id="err-tags" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('tags'){{$message}}@enderror</p>
-      <label for="" class="x-font-12 uk-text-italic">Pisahkan dengan tanda tagar (#) untuk setiap hastag.</label>
-     
-
-     <div class="dropzone uk-padding uk-margin-small"> 
-          <div id="x-drop"  class="uk-text-center x-font-14"> 
-            <span uk-icon="icon:  cloud-upload"></span>
-            Tarik gambar kesini atau <span id="trigger-upload"  style="cursor:pointer"><b>Klik disini</b></span></div>
           
-          <div id="preview" class="uk-child-width-1-2@xs uk-child-width-1-4@m uk-flex uk-flex-center uk-child-width-1-2 uk-padding uk-padding-remove-horizontal" uk-grid uk-lightbox="animation: slide"></div>
+        </div>
+        <div class="uk-flex uk-flex-column">
+            <label for="" class="x-font-12">Enter Hastag in below <span  class="uk-text-italic" >( separate each tag with this sign # )</span></label>
+            <textarea class="uk-padding-small" id="tags" name="tags" placeholder="#Hastag" style="height:272px">{{ $edit == true ?  $content['tags'] : ''}}</textarea>
+            <p id="err-tags" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('tags'){{$message}}@enderror</p>
+
+        </div>
       </div>
-      
-      
-      
-      <button class="uk-button uk-margin x-white-text x-font-14 uk-align-center uk-align-left@m" id="btn-simpan" type="submit">Simpan</button>
+      <button class="uk-button uk-margin x-white-text x-font-14 uk-align-center uk-align-left@m" id="btn-simpan" type="submit">Save</button>
     </form>
     <input type="file" name="fl-upload[]" id="fl-upload" style="visibility:hidden" multiple accept="image/*">
 
@@ -80,21 +89,25 @@
 
 <script>
 
-  var image        = '';
-  var content      = `{!! $edit == true ?  $content['description'] : '' !!}`;
-  var pageCategory = `{{$page_category}}`;
-  var edit = `{{$edit}}`;
-  console.log(edit)
-  var url          = `{{ url("xpanel/$page_category") }}`;
-  var summernote   = $('#summernote');
-  var hash         = '';
-  var files        = [];
-  var compressImg  = new Blob();
-  var preview      = document.querySelector('#preview');
-  var dropZone     = document.querySelector('#x-drop');
-  var imagePath = `{!! $edit == true ?  json_encode(explode("|" , $content['image_path'])) : '' !!}` ;
+  var image           = '';
+  var content         = `{!! $edit == true ?  $content['description'] : '' !!}`;
+  var pageCategory    = `{{$page_category}}`;
+  var edit            = `{{$edit}}`;
+  var url             = `{{ url("xpanel/$page_category") }}`;
+  var summernote      = $('#summernote');
+  var hash            = '';
+  var files           = [];
+  var compressImg     = new Blob();
+  var preview         = document.querySelector('#preview');
+  var dropZone        = document.querySelector('#x-drop');
+  var imagePath       = `{!! $edit == true ?  json_encode(explode("|" , $content['image_path'])) : '' !!}` ;
+  var categories      = JSON.parse('{!! json_encode($categories) !!}');
+  var categoryChecked = JSON.parse(`{!! json_encode(explode('|' , $categoryChecked)) !!}`);
   imagePath !== '' ? imagePath = JSON.parse(imagePath) : '' ; 
   initThumb(imagePath);
+  initCategory();
+  initChecked();
+  
 
   summernote.summernote({
       callbacks: {
@@ -181,7 +194,6 @@
         frmData.append('fl-upload2[]' , file , file.name);
       });
       
-      console.log(files)
       $.ajax({
         method: 'POST',
         url: url,
@@ -190,17 +202,17 @@
         processData: false,
         success: function (response) {
           UIkit.notification({
-            message: '<h4>Data berhasil tersimpan</h4>',
+            message: '<h4>Data was saved</h4>',
             timeout: 1500
         });
         setTimeout(() => {
-          location.reload();
+          location.href = `{{url('xpanel/'.$page_category)}}`;
         }, 1500);
           
         },
         error:()=>{
           UIkit.notification({
-            message: '<p class="x-font-14" style="line-height:18px !important;">Maaf terjadi masalah dalam proses penyimpanan, mohon diulangi lagi atau kalau masih gagal mohon refresh halaman ini.</p>'
+            message: '<p class="x-font-14" style="line-height:18px !important;">Error on process saving, please retry again or refresh this page.</p>'
           })
         }
       });
@@ -227,6 +239,79 @@
       $('#trigger-upload').click(()=>{
         $('#fl-upload').trigger('click')
       })
+    }
+
+    function initCategory(){
+      var strip = '';
+      var html = '';
+      var stripCount = 0;
+      
+      if (categories.length == 0) {
+        $('#list-category').append('<div class="uk-text-center">Category not found.</div>');
+      }
+
+      categories.forEach(category => {
+        char_count(category.id_parent , '|') > stripCount ? stripCount = char_count(category.id_parent , '|') : stripCount;
+      });
+
+      for (var i = 0; i <= stripCount; i++) {
+        categories.forEach(category => {
+          strip = '';
+          html= '';
+          var cekStripCount = char_count(category.id_parent , '|') ;
+          var indexOf       = category.id_parent.indexOf('|');
+                
+        
+          if (cekStripCount !== 0) {
+            for (var x = 0; x < i; x++) {
+              strip +='--';
+            }
+          }
+         
+          if (cekStripCount == i) {
+            var parent =  indexOf !== -1 ? category.id_parent.substring(0,indexOf) : '0';
+            if (parent !== "0") {
+              html +=`<div id="category-${category.id}"  class="uk-margin-small category"> 
+                <input id="cek-${category.id}" name="category[]" type="checkbox" value="${category.id}" />
+                ${strip} <span class="category-name">${category.name}</span></div>`;
+              if ($('#category-'+parent).length) {
+                  $('#category-'+parent).append(html);
+              }else{
+                $('#list-category').append(html);
+                
+              }
+            }else{
+              html +=`<div id="category-${category.id}" class="uk-margin-small category">
+                <input id="cek-${category.id}" name="category[]" type="checkbox" value="${category.id}" />
+                ${strip} <span class="uk-text-bold">${category.name}</span>   </div>`;
+              $('#list-category').append(html);
+            }
+            return false;
+          }
+          
+        });                
+      }
+      
+      
+    }
+
+    function initChecked(){
+      categoryChecked.forEach(cek => {
+            $(`#cek-${cek}`).prop( "checked", true );
+          });  
+    }
+
+
+    function char_count(str, letter) {
+      var letter_Count = 0;
+      for (var position = 0; position < str.length; position++) 
+      {
+          if (str.charAt(position) == letter) 
+            {
+            letter_Count += 1;
+            }
+        }
+        return letter_Count;
     }
 
     function initThumb(images){
@@ -271,9 +356,8 @@
                       var fileNameThumb = '';
 
                       if (source == 'server') {
-                        fileNameThumb =  `{{ $content['image_thumb'] }}`;
+                        fileNameThumb =  `{{ $edit == true ? $content['image_thumb'] : '' }}`;
                         fileNameThumb == file.name ? checked = 'checked' :  '';
-                        console.log(fileNameThumb + '  '+ file.name);
                       }else{
                         if (!$('input[name="image_thumb"]').length) {
                           x == 1 ? checked = 'checked' : '';
@@ -290,7 +374,7 @@
                               </div>
                           </a>
                           <span class=" x-font-12 ">
-                            <input type="radio" ${checked} name="image_thumb" value="${file.name}" class=" uk-margin-small-right"  title="Jadikan gambar utama">Gambar utama
+                            <input type="radio" ${checked} name="image_thumb" value="${file.name}" class=" uk-margin-small-right"  title="choose to be main image">Main Image
                           </span>
                       </div>
                       `
