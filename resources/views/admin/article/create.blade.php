@@ -34,7 +34,7 @@
       <p id="err-title" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('title'){{$message}}@enderror</p>
       
      
-      <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Enter short description in here" maxlength="150">{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
+      <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Enter short description in here" >{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
       <p id="err-short_description" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('short_description'){{$message}}@enderror</p>
       
       <label for="" class=" x-font-12">Write full description of {{ $page_category}} in below</label>

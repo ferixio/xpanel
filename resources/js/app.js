@@ -141,10 +141,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
   // ====================== end sidebar animation ======================
-  
-
-
-
 
 
   // ================= function custom ===============

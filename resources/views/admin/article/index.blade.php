@@ -33,7 +33,7 @@ if (Request::segment(2) == 'product') {
 
     @forelse ($data as $content)
         <div>
-          <div class="x-grid-item uk-box-shadow-small x-list uk-flex uk-flex-middle  uk-transition-toggle uk-position-relative" tabindex="0">
+          <div class="x-grid-item  uk-box-shadow-small x-list uk-flex uk-flex-middle  uk-transition-toggle uk-position-relative" tabindex="0">
             
             <input type="checkbox" name="cek-{{ $content['id']}}" data_id="{{ $content['id']}}" data-class="cek-content" class="uk-position-top-left" style="margin: 10px 0 0 10px !important;">
             <div  style="height:100px;width:100px;background-image:url({{ is_null($content['image_thumb']) || empty($content['image_thumb']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_thumb']) }});background-size:cover;" class="uk-border-rounded uk-margin uk-width-auto"></div>

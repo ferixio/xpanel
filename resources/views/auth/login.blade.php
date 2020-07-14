@@ -24,7 +24,7 @@
     </div>
     
     <div id="login-form" class="uk-width-1-2@m uk-position-relative x-fullheight">
-        <form action="" method="POST" class="uk-form-stacked  uk-position-center uk-padding" >
+        <form action="" method="POST" class="uk-form-stacked  uk-position-center" >
             @csrf
             <div class="uk-text-center uk-margin-top">
                 <img src="{{ asset('/img/logo.png') }}" alt="logo" srcset="" width="170px" height="170px" class=" uk-hidden@m">

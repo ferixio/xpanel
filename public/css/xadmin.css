@@ -1,6 +1,8 @@
 :root {
   --color-theme: #19969B;
+  --color-theme-public: #613606;
   --color-accent: #45B4AB;
+  --color-accent-public: #ffd3a0;
   --xgreen: #C5D800;
   --x-tosca: rgb(159, 247, 250);
   --x-tosca-dark: #078285;
@@ -749,12 +751,28 @@ div.uk-first-column {
   color: var(--color-theme) !important;
 }
 
+.x-color-theme-public {
+  background-color: var(--color-theme-public);
+}
+
+.x-color-theme-public-text {
+  color: var(--color-theme-public) !important;
+}
+
 .x-color-accent {
   background-color: var(--color-accent) !important;
 }
 
 .x-color-accent-text {
   color: var(--color-accent) !important;
+}
+
+.x-color-accent-public {
+  background-color: var(--color-accent-public);
+}
+
+.x-color-accent-public-text {
+  color: var(--color-accent-public) !important;
 }
 
 .x-color-sidebar {

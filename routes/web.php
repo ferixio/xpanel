@@ -6,10 +6,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('login', 'Auth\LoginController@showLoginForm');
 Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('view/{category}', 'PageController@content');
 
+Route::get('/', 'PageController@home');
+Route::view('coba', 'coba');
+Route::view('checkout', 'checkout');
+Route::post('order', 'CoreController@order');
+Route::get('product', 'PageController@product');
+Route::get('product/detail/{slug}', 'PublicPage\ArticleController@index');
 
-Route::view('/', 'home');
 Route::group(['middleware' => 'auth', 'prefix' => 'xpanel'], function() {
     Route::get('/', 'DashboardController@index');
     Route::get('dashboard', 'DashboardController@index');
