@@ -79,11 +79,6 @@
     </form>
     <input type="file" name="fl-upload[]" id="fl-upload" style="visibility:hidden" multiple accept="image/*">
 
-    
-
-
-
-
 <link rel="stylesheet" href="{{asset('summernote/summernote-lite.min.css')}}">
 <script src="{{asset('summernote/summernote-lite.min.js')}}"></script>
 

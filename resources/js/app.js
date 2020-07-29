@@ -51,6 +51,15 @@ document.addEventListener('DOMContentLoaded',()=>{
       numeralThousandsGroupStyle: 'thousand'
     });
   });
+
+
+  $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
+  $('.active').addClass('uk-active');
+
+  $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
+  $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
+  $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
+  $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
   
   
 
@@ -72,13 +81,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       viewListData()
     }
 
-    $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
-    $('.active').addClass('uk-active');
-
-    $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
-    $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
-    $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
-    $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
+    
 
     
     btnEdit.forEach((btn)=>{
@@ -216,11 +219,6 @@ $(document).ajaxComplete(()=>{
   $('#loading').html('');
   $('#loading').removeClass('uk-overlay uk-overlay-primary uk-position-cover');
 });
-
-
-
-
-
 
 
 // =================== end function custom ================

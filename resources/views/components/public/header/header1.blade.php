@@ -1,11 +1,19 @@
+<style>
+  li.x-hover-white:hover a{
+    color:white !important;
+  }
+</style>
 <section class="uk-container" >
 
   <div class="uk-flex-middle uk-flex" style="height:70px !important;">
+
     <div  class="uk-position-z-index">
-      <a href="{{url('/')}}">
-        <img  data-src="{{asset('storage/uploads/logo.png')}}" alt="" srcset="" uk-img style="max-height:100px;margin-top:50px">
+      <a href="{{url('/')}}" class="uk-box-shadow-small">
+        <img  data-src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" uk-img style="max-height:70px;margin-top:20px">
       </a>
     </div>
+    
+    <span uk-icon="icon: menu;ratio:1.5" class="uk-hidden@m" uk-toggle="target: #canvas-menu" ></span>
 
     <div  class="uk-width-expand@m uk-visible@m">
       <ul class="uk-flex uk-padding-small uk-flex-row uk-grid-medium uk-flex-center" uk-grid>
@@ -14,15 +22,25 @@
     </div>
 
 
-    <div class="uk-width-auto@m uk-text-center" style="margin-left:-10px !important;">
+    <div class="uk-width-auto@m uk-text-right" style="margin-left:-10px !important;">
       
       <a uk-toggle="target: #canvas-cart"  class="uk-icon-button btn-cart" uk-icon="cart"  title="Daftar belanja" uk-tooltip ></a>
       <a uk-toggle="target: #canvas-wishlist" class="uk-icon-button btn-wishlist" uk-icon="heart"  title="Daftar wishlist" uk-tooltip ></a>
-      <a uk-toggle="target: #canvas-login" class="uk-icon-button" uk-icon="user"  title="Akun" uk-tooltip ></a>
+      <span class="uk-icon-button x-cursor" uk-icon="user"  title="Akun" uk-tooltip></span>
+      <ul uk-dropdown="pos: bottom-right;duration: 400;offset:200px" style="border-radius:5px; background:white;padding:10px 0;width:250px">
+        @if (!Auth::check())
+          <li  class="uk-padding-small x-hover-white"><a  class="x-color-theme-text x-font-14" href="{{url('masuk')}}"> <span uk-icon="icon: sign-in"></span>  Masuk</a></li>
+        @else
+          <p class="x-font-14" style="margin:10px 0 5px 15px">Halo kak <b>{{Auth::user()->nama}}</b></p>
+          <li class="uk-padding-small x-hover-white"><a class="x-color-theme-text  x-font-14" href="{{url('history-order')}}"> <span uk-icon="icon: file-text"></span> Riwayat Pesanan</a></li>
+          <li  class="uk-padding-small x-hover-white"><a  class="x-color-theme-text  x-font-14" href="{{url('pengaturan')}}"> <span uk-icon="icon: cog"></span> Pengaturan</a></li>
+          <li  class="uk-padding-small x-hover-white"><a  class="x-color-theme-text x-font-14" href="{{url('logout')}}"> <span uk-icon="icon: sign-out"></span> Keluar</a></li>
+            
+        @endif
+      </ul>
       
     </div>
 
-    <span uk-icon="icon: menu;ratio:1.5" class="uk-hidden@m" uk-toggle="target: #canvas-menu" ></span>
     
   </div>
 
@@ -35,17 +53,7 @@
     </div>
   </div>
 
-  <div id="canvas-login"  uk-offcanvas="flip: true;">
-    <div class="uk-dark uk-offcanvas-bar uk-box-shadow-small ">
-      <button class="uk-offcanvas-close" type="button" uk-close></button>
-
-      <form action="#" class="uk-margin-medium-top">
-        <p class="x-font-14 uk-text-bold">Masuk</p>
-        <input type="text" class="uk-input">
-        <input type="text" class="uk-input">
-      </form>
-    </div>
-  </div>
+  
   
   <div id="canvas-cart" uk-offcanvas="flip: true;">
     <div class="uk-offcanvas-bar uk-box-shadow-small" style="min-width: 350px;padding-right:10px !important;padding-left:20px !important;">

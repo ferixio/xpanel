@@ -1,7 +1,7 @@
 <section  class="uk-container uk-height-auto uk-text-left "  style="min-height: 500px">
   <div class="uk-child-width-1-4@m uk-child-width-1-2 uk-padding" uk-grid>
     <div class=" uk-flex uk-flex-center">
-      <img class="uk-border-rounded" data-src="{{asset('storage/uploads/logo.png')}}" alt="" srcset="" uk-img style="max-height: 200px">
+      <img class="uk-border-rounded" data-src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" uk-img style="max-height: 200px">
       
     </div>
     <div >
@@ -14,12 +14,12 @@
       </ul>
     </div>
     <div class="uk-flex uk-flex-column uk-flex-left uk-flex-last@m uk-text-center uk-text-left@m">
-      <h5 class="uk-text-bold x-white-text uk-text-uppercase uk-margin-remove uk-padding-remove">"Sugar Pastry Brownies"</h5>
+      <h5 class="uk-text-bold x-white-text uk-text-uppercase uk-margin-remove uk-padding-remove">"{{$x_setting['ST-0001']['isi']}}"</h5>
 
       <p class="x-font-14">
         
-        Office : <br> Jl. gemah harjo no 12 Pati, Jawa tengah. Indonesia. <br>
-        Phone : +62 896 339 111
+        Office : <br> {{$x_setting['ST-0002']['isi']}} <br>
+        Phone : {{$x_setting['ST-0004']['isi']}}
       </p>
       <ul class="uk-flex uk-flex-left@m uk-flex-center uk-padding-remove">
         <li><a href="#" class="uk-icon-button" uk-icon="facebook"></a></li>
@@ -39,5 +39,5 @@
   
 </section>
 <div class="uk-text-center  x-font-12 uk-padding-small x-color-accent uk-width-1-1">
-  <span class="uk-text-bold">Sugar pastry Brownies</span> &copy;   {{date_create()->format('Y')}}. Supported by <a href="#" class="uk-text-bold x-white-text">XIT foundation</a>
+  <span class="uk-text-bold">{{$x_setting['ST-0001']['isi']}}</span> &copy;   {{date_create()->format('Y')}}. Supported by <a href="#" class="uk-text-bold x-white-text">XIT foundation</a>
 </div>

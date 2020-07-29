@@ -20,8 +20,14 @@ class CreateOrdersTable extends Migration
             $table->string('email', 100)->default('');
             $table->string('alamat', 200)->default('');
             $table->text('list_product')->nullable();
+            $table->text('catatan')->nullable();
+            $table->string('status', 10)->nullable()->default('0'); // -1 = di cancel , 0 = order masuk , 1 = terbayar oleh customer , 2=pembayaran terkonfirmasi , 3 = diproses , 4 = dikirim , 5 = sampai , 6 = selesai
+            $table->double('total', 20, 2)->default(0);
+            $table->double('potongan', 20, 2)->default(0);
+            $table->text('bukti_transfer')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

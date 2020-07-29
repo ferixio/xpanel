@@ -61,7 +61,7 @@
           
             <div class="uk-margin-medium-bottom">
               <input id="txt-qty-pesan" type="number" value="1" min="1" class="uk-input uk-text-center" style="max-width: 80px;padding-left: 10px !important" required  title="Masukan jumlah beli disini" uk-tooltip="pos:right" >
-              <p class="uk-text-bold uk-text-italic x-font-12 uk-margin-remove">*masukan jumlah yang ingin anda pesan diatas</p>
+              <p class="uk-text-bold uk-text-italic x-font-12 uk-margin-remove">*masukan jumlah yang ingin anda pesan.</p>
             </div>
             <button class="uk-button uk-button-default btn-add-cart uk-width-auto@m uk-width-expand" style="min-width:235px">Tambah ke keranjang</button>
             <button class="uk-button uk-button-default uk-margin-small btn-whatsapp uk-width-auto@m uk-width-expand" style="min-width:235px">Pesan via whatsapp</button>
@@ -75,10 +75,12 @@
             </div>
             <div class="uk-text-bold uk-margin-small-top x-font-14 ">
               Share produk ini : 
-              <a href="" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
-              <a href="" class="uk-icon" uk-icon="icon: instagram;ratio:0.8"></a>
-              <a href="" class="uk-icon" uk-icon="icon: whatsapp;ratio:0.8"></a>
-              <a href="" class="uk-icon" uk-icon="icon: twitter;ratio:0.8"></a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
+                <a href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
+                <a href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: linkedin;ratio:0.8"></a>
+                <a href="https://telegram.me/share/url?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: telegram;ratio:0.8"></a>
+            </div>
             </div>
           </div>
         </div>
@@ -103,10 +105,11 @@
               </div>
               <div class="uk-text-bold uk-margin-small-top x-font-14 ">
                 Share produk ini : 
-                <a href="" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
-                <a href="" class="uk-icon" uk-icon="icon: instagram;ratio:0.8"></a>
-                <a href="" class="uk-icon" uk-icon="icon: whatsapp;ratio:0.8"></a>
-                <a href="" class="uk-icon" uk-icon="icon: twitter;ratio:0.8"></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
+                <a href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
+                <a href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: linkedin;ratio:0.8"></a>
+                <a href="https://telegram.me/share/url?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: telegram;ratio:0.8"></a>
               </div>
             </div>
           </li>

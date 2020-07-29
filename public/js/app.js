@@ -3414,7 +3414,13 @@ document.addEventListener('DOMContentLoaded', function () {
       numeral: true,
       numeralThousandsGroupStyle: 'thousand'
     });
-  }); //  ============ cek element x grid ======================
+  });
+  $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
+  $('.active').addClass('uk-active');
+  $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
+  $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
+  $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
+  $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>'); //  ============ cek element x grid ======================
 
   if (document.body.contains(xGrid)) {
     if (viewMode == 'grid') {
@@ -3433,12 +3439,6 @@ document.addEventListener('DOMContentLoaded', function () {
       viewListData();
     };
 
-    $('.pagination').addClass('uk-pagination uk-flex uk-flex-right x-font-12');
-    $('.active').addClass('uk-active');
-    $('.pagination li [rel=prev]').html('<span uk-pagination-previous></span>');
-    $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
-    $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
-    $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
     btnEdit.forEach(function (btn) {
       btn.onclick = function () {
         modalTitle.innerHTML = "Perbarui Data";

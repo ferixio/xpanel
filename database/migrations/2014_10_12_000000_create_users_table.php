@@ -18,8 +18,11 @@ class CreateUsersTable extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('hak_akses');
-            $table->string('bidang_usaha');
+            $table->integer('hak_akses'); // 80 = super admin /  owner , 10 = user , 20 = admin
+            $table->string('telp', 200)->nullable()->default('');
+            $table->text('alamat')->nullable();
+            $table->timestamp('verified_at')->nullable();
+            $table->string('bidang_usaha')->nullable();
             $table->boolean('status_aktif')->default(1);
             $table->rememberToken();
             $table->timestamps();

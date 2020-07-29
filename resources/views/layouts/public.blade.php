@@ -89,6 +89,8 @@
     <script>
       document.addEventListener('DOMContentLoaded',()=>{
 
+       
+
         $('.pagination').addClass('uk-pagination uk-flex uk-flex-middle uk-flex-right x-font-12');
         $('.active').addClass('uk-active');
 
@@ -209,7 +211,7 @@
        
         var content = `Halo kak, mau pesen produk ini dong kak %0a===================== %0aDetail Pesan %0anama barang : ${namaBarang} %0aHarga : ${price.trim()} %0aJumlah Beli : ${qty} %0aCatatan : %0a===================== %0aLink produk: %0a${url}`
 
-        window.open(`https://wa.me/62895390898119?text=${content}`,'_blank');
+        window.open(`https://wa.me/6285641787121?text=${content}`,'_blank');
         
 
         
@@ -247,7 +249,7 @@
         $('#txt-url-share').val(`${urlProduct}`);
 
         var content = `Halo kak, mau pesen produk ini dong kak %0aLink produk: %0a${urlProduct}`
-        $('.btn-whatsapp-preview').attr('href', `https://wa.me/62895390898119?text=${content}`);
+        $('.btn-whatsapp-preview').attr('href', `https://wa.me/6285641787121?text=${content}`);
        
 
         $('#link-detail-preview').html(`<a href="${urlProduct}" class="uk-button-default uk-button">Lihat detail</a>`);
@@ -298,6 +300,7 @@
           
         });
         
+        localStorage.setItem('total_order' , total);
         $('.total-belanja').html(Number((total).toFixed(1)).toLocaleString());
         html == '' ? html = '<div class="uk-placeholder uk-background-muted">Belum ada produk yang dimasukan ke keranjang belanja</div>' : '';
         $('.list-cart').html(html);

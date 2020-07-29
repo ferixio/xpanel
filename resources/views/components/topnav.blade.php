@@ -15,7 +15,7 @@
        </div>
         <div uk-dropdown="pos: bottom-right" class=" uk-padding-remove-horizontal">
           <div class="uk-nav" >
-              <li><a href="{{ url('X') }}"> <span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a></li>
+              <li><a href="{{ url('pengaturan') }}" target="_blank"> <span uk-icon="icon: user" class="uk-margin-small-right"></span>Profile</a></li>
               <li><a href="{{ route('logout') }}"> <span uk-icon="icon:  sign-out" class="uk-margin-small-right"></span>Keluar</a></li>
           </div>
       </div>

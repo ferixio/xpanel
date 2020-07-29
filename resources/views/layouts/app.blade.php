@@ -34,7 +34,7 @@
                 <x-sidebar />
             </div>
 
-            <ul id="menu-mobile" class="uk-flex uk-flex-center uk-position-bottom-center x-color-theme uk-hidden@m x-fullwidth uk-grid-collapse uk-child-width-expand uk-padding-small uk-margin-remove" uk-grid>
+            <ul id="menu-mobile" class="uk-flex uk-flex-center uk-position-fixed uk-position-bottom-center x-color-theme uk-hidden@m x-fullwidth uk-grid-collapse uk-child-width-expand uk-padding-small uk-margin-remove " uk-grid>
               <li>
                 <a href="{{ url('/xpanel') }}" class="uk-flex uk-flex-column">
                   <div class="x-icon x-icon-18 x-icon-dashboard x-margin-auto"></div>
@@ -47,23 +47,33 @@
                   <div class="x-icon x-icon-18 x-icon-article x-margin-auto"></div>
                   <div>Article</div>
                 </a>
+                <ul uk-dropdown="offset:15;pos:top-center" class="uk-padding-remove-horizontal" style="border-radius:5px 5px 0 0 !important">
+                  <li class="uk-padding-small"><a href="{{url('xpanel/article/create')}}"> <span uk-icon="icon: pencil"></span> New article</a></li>
+                  <li class="uk-padding-small"><a href="{{url('xpanel/article')}}"> <span uk-icon="icon: menu"></span> List Of article</a></li>
+                  <li class="uk-padding-small"><a href="{{url('xpanel/category-article')}}"> <span uk-icon="icon: thumbnails"></span>Category Article</a></li>
+                </ul>
               </li>
               <li>
                 <a href="{{ url('xpanel/product')}}" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-product x-margin-auto"></div>
+                  <div class="x-icon x-icon-18 x-icon-page x-margin-auto"></div>
                   <div>Product</div>
                 </a>
+                <ul uk-dropdown="offset:15;pos:top-center" class="uk-padding-remove-horizontal" style="border-radius:5px 5px 0 0 !important">
+                  <li class="uk-padding-small"><a href="{{url('xpanel/product/create')}}"> <span uk-icon="icon: pencil"></span> New Product</a></li>
+                  <li class="uk-padding-small"><a href="{{url('xpanel/product')}}"> <span uk-icon="icon: menu"></span> List Of Product</a></li>
+                  <li class="uk-padding-small"><a href="{{url('xpanel/category-product')}}"> <span uk-icon="icon: thumbnails"></span>Category Product</a></li>
+                </ul>
               </li>
               <li>
-                <a href="{{ url('dashboard') }}" class="uk-flex uk-flex-column">
-                  <div class="x-icon x-icon-18 x-icon-page x-margin-auto"></div>
-                  <div>Pages</div>
+                <a href="{{url('xpanel/order-product')}}" class="uk-flex uk-flex-column">
+                  <div class="x-icon x-icon-18 x-icon-product x-margin-auto"></div>
+                  <div>Order</div>
                   
                 </a>
               </li>
               
               <li>
-                <a href="{{ url('dashboard') }}" class="uk-flex uk-flex-column">
+                <a href="{{ url('xpanel/setting/company-profile') }}" class="uk-flex uk-flex-column">
                   <div class="x-icon x-icon-18 x-icon-pengaturan x-margin-auto"></div>
                   <div>Setting</div>
                   
@@ -75,7 +85,7 @@
 
             
 
-            <div id="content" class="uk-width-expand">
+            <div id="content" class="uk-width-expand" >
                 <x-topnav />
                 <section id="content-area">
                    <div class="uk-padding-small uk-container">
@@ -83,8 +93,8 @@
                    </div>
                    <x-footer />
                    <div class="x-space-100"></div>
+                  
                 </section>
-              
             </div>
         </section>
 

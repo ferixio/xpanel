@@ -18,23 +18,28 @@
           
           <div class="uk-margin-small">
             <label for="" class="x-font-12 uk-text-meta">Nama Lengkap</label>
-            <input type="text" name="name" class="uk-input" placeholder="masukan nama anda disini" required>
+            <input type="text" name="name" class="uk-input" placeholder="masukan nama anda disini" required value="{{Auth::check() ? Auth::user()->nama : ''}}">
             <p id="err-name" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('name'){{$message}}@enderror</p>
           </div>
           <div class="uk-margin-small">
             <label for="" class="x-font-12 uk-text-meta">Nomor telp / Whatsapp</label>
-            <input type="tel" name="telp" class="uk-input" placeholder="masukan nomor telp anda disini" required>
+            <input type="tel" name="telp" class="uk-input" placeholder="masukan nomor telp anda disini" value="{{Auth::check() ? Auth::user()->telp : ''}}" required>
             <p id="err-telp" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('telp'){{$message}}@enderror</p>
           </div>
           <div class="uk-margin-small">
             <label for="" class="x-font-12 uk-text-meta">Email</label>
-            <input type="email" name="email" class="uk-input" placeholder="masukan alamat email anda disini" required>
+            <input type="email" name="email" class="uk-input" placeholder="masukan alamat email anda disini" value="{{Auth::check() ? Auth::user()->email : ''}}" required>
             <p id="err-email" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('email'){{$message}}@enderror</p>
           </div>
           <div class="uk-margin-small">
             <label for="" class="x-font-12 uk-text-meta">Alamat</label>
-            <input type="text" name="alamat" class="uk-input" placeholder="masukan alamat anda disini" required>
+            <input type="text" name="alamat" class="uk-input" placeholder="masukan alamat anda disini" value="{{Auth::check() ? Auth::user()->alamat : ''}}" required>
             <p id="err-alamat" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('alamat'){{$message}}@enderror</p>
+          </div>
+          <div class="uk-margin-small">
+            <label for="" class="x-font-12 uk-text-meta">Catatan</label>
+            <input type="text" name="catatan" class="uk-input" placeholder="bila ada catatan masukan disini" required>
+            <p id="err-catatan" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('catatan'){{$message}}@enderror</p>
           </div>
           <button id="btn-simpan-pesanan" class="uk-button uk-button-default uk-margin-medium-top uk-align-center" type="button">Proses Pesanan Anda</button>
         </form>
@@ -61,8 +66,9 @@
       var data = new FormData(this);
       hash = $('meta[name=csrf-token]').attr('content');;
       var listProduct =  localStorage.getItem('cart');
-      
+            
       data.append('list_product' , listProduct );
+      data.append('total' , localStorage.getItem('total_order') );
       data.append('_token', hash);
       $.ajax({
         type: "POST",
@@ -74,13 +80,15 @@
         cache: false,
         enctype: 'multipart/form-data',
         success: function (res) {
+            
            if (res == "1") {
              localStorage.removeItem('cart');
-             UIkit.modal.alert(`<div>
-             <p class="uk-text-bold">Data pesanan telah tersimpan.</p>
-             <p class="uk-text-meta">Anda akan mendapatkan invoice pesanan anda ke alamat email / Nomor Whatsapp yang anda masukan.</p></div>`).then(()=>{
-               location.reload()
-             })   
+             window.location.href = "{{url('order-sukses')}}"
+            //  UIkit.modal.alert(`<div>
+            //  <p class="uk-text-bold">Data pesanan anda telah tersimpan.</p>
+            //  <p class="uk-text-meta">Anda akan mendapatkan invoice pesanan anda ke alamat email / Nomor Whatsapp yang anda masukan.</p></div>`).then(()=>{
+            //    window.location.href = "{{url('registrasi-sukses')}}"
+            //  })   
           }
         },
         error: (res)=>{

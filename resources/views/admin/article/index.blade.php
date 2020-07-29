@@ -39,16 +39,21 @@ if (Request::segment(2) == 'product') {
             <div  style="height:100px;width:100px;background-image:url({{ is_null($content['image_thumb']) || empty($content['image_thumb']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_thumb']) }});background-size:cover;" class="uk-border-rounded uk-margin uk-width-auto"></div>
 
             <div class="x-grid-desc uk-margin-medium-left  uk-width-expand">
-              <p class="uk-text-capitalize x-font-16 uk-width-expand uk-text-bold  uk-margin-remove">{{ $content['title']}}</p>
+              <p class="uk-text-capitalize x-font-16 uk-width-expand uk-text-bold  uk-margin-remove"><a href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}">{{ $content['title']}} </a> <br> 
+                <span class="x-font-12">Dilihat {{number_format($content['viewer'])}} kali</span>
+              </p>
               <p class="uk-text-meta x-font-12  uk-margin-remove "> 
-                {!! '<br>by <b>'. $content['publisher'].'</b><br><span class="x-font-10">'.date_format(date_Create($content['created_at']),'d-M-Y H:i').'</span>'!!} </p>
+                <br>by <b>{{ $content['publisher']}} </b><br>
+                <span class="x-font-10">{{date_format(date_Create($content['created_at']),'d-M-Y H:i')}}</span> <br>               
+              
+              </p>
 
                 
             </div>
             <ul class="x-grid-icon uk-iconnav uk-iconnav-vertical">
               <li><a id="duplicate-{{ $content['id'] }}" class="btn-duplicate uk-transition-slide-right" uk-icon="icon: copy" uk-tooltip="title: Duplicate data" ></a></li>
               <li><a class="btn-edit uk-transition-slide-right x-transition-delay-2" href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}" uk-icon="icon: file-edit" uk-tooltip="title: Edit data"></a></li>
-              <li><a class="btn-view uk-transition-slide-right x-transition-delay-4 x-icon-24 x-icon-eye" target="_blank"  href="{{ url('view/'.$content['slug']) }}" uk-tooltip="title: View on publish"></a></li>
+              <li><a class="btn-view uk-transition-slide-right x-transition-delay-4 x-icon-24 x-icon-eye" target="_blank"  href="{{ url('product/detail/'.$content['slug'].'?id='.$content['id']) }}" uk-tooltip="title: View on publish"></a></li>
               <li><a id="{{ $content['id'] }}" class="btn-hapus uk-transition-slide-right x-transition-delay-6" href="#" uk-icon="icon: trash" uk-tooltip="title: Delete data"></a></li>
             </ul>
           </div>
