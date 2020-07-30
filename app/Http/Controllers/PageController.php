@@ -13,42 +13,59 @@ class PageController extends Controller
     public function home(){
       $data = Content::orderBy('created_at','desc')
             ->Where('category_page' , 'product')->paginate(8);
-      return view('home', compact('data'));
+      $article = Content::orderBy('created_at','desc')
+            ->Where('category_page' , 'article')->paginate(8);
+            
+      return view('home', compact('data' , 'article'));
     }
     
     public function content(){
-      dump(\request()->query('type'));
+      dump(request()->query('type'));
     }
     
     public function product(){
-      $category = Category::Where('jenis' , 'category-product')->orderBy('name')->get();
-
+      $category = [];
+      $filter        = request()->cek_category;
       $keyword       = request()->keyword;
       $paginate      = request()->paginate !== null ? request()->paginate : 12;
       $sort          = request()->sort;
-      $page_category = request()->segment(2) == 'article' ? 'article' : 'product';
-      $data          = Content::orderBy('created_at','desc');
+      $page_category = request()->segment(1) == 'article' ? 'article' : 'product';
+      $data          = Content::select('*');
+
+      if ($sort == 'asc') {
+        $data = $data->orderBy('price','asc');
+      }elseif ($sort == 'desc'){
+        $data = $data->orderBy('price','desc');
+      }else{
+        $data = $data->orderBy('created_at','desc');
+      }
 
       if ( $keyword !== null) {
         
         $data = $data
-        ->Where('title' , 'like' , '%'.$keyword.'%')
+        ->where('title' , 'like' , '%'.$keyword.'%')
         ->orWhere('tags' , 'like' , '%'.$keyword.'%')
         ->orWhere('description' , 'like' , '%'.$keyword.'%');
       }
 
+     
+
       if ($page_category == 'article') {
-        $data =  $data->Where('category_page' , 'article');
+        $data =  $data->where('category_page' , 'article')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+        
+        $category = Category::where('jenis' , 'category-article')->orderBy('name')->get();
+        return view('article', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
       }else{
-        $data =  $data->Where('category_page' , 'product');
+        $data =  $data->where('category_page' , 'product')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('product', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
       }
 
-      if ($sort == 'asc') {
-        $data = Content::orderBy('created_at','asc');
-      }
-
-      
-      $data = $data->paginate($paginate);
-      return view('product', compact('category', 'data' , 'keyword'));
     }
 }

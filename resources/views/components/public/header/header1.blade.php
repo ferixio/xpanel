@@ -7,12 +7,6 @@
 
   <div class="uk-flex-middle uk-flex" style="height:70px !important;">
 
-    <div  class="uk-position-z-index">
-      <a href="{{url('/')}}" class="uk-box-shadow-small">
-        <img  data-src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" uk-img style="max-height:70px;margin-top:20px">
-      </a>
-    </div>
-    
     <span uk-icon="icon: menu;ratio:1.5" class="uk-hidden@m" uk-toggle="target: #canvas-menu" ></span>
 
     <div  class="uk-width-expand@m uk-visible@m">
@@ -21,6 +15,14 @@
       </ul>
     </div>
 
+
+    <div  class="uk-position-z-index uk-flex-first@m">
+      <a href="{{url('/')}}" >
+        <img  data-src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" uk-img style="max-height:70px;margin-top:5px">
+      </a>
+    </div>
+    
+   
 
     <div class="uk-width-auto@m uk-text-right" style="margin-left:-10px !important;">
       

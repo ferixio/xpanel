@@ -33,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $wa = Setting::where('kode' , 'ST-0004')->firstOrFail();
+        $wa = preg_replace('/\D/' , '' ,$wa['isi']);
+        $wa = substr($wa , 0 , 1) == '0' ? '62'.substr($wa , 1 , strlen($wa)-1) : $wa;
+
+        $social_media = \json_decode(Setting::where('kode' , 'ST-0007')->firstOrFail()['isi']);
+
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');
@@ -47,6 +53,10 @@ class AppServiceProvider extends ServiceProvider
               
         Schema::defaultStringLength(191);
         View::share('x_setting' , Setting::get()->keyBy('kode'));
+        View::share('social_media' , $social_media);
+        View::share('wa' , $wa);
+       
+        
         if (strtolower(Request::segment(1)) !== 'xpanel') {
           Visitor::insert([
             'ip' => Request::ip(),

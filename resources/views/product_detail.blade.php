@@ -9,7 +9,7 @@
 
    <section class="uk-container uk-margin-large-bottom uk-margin-large-top">
      <div class="uk-grid uk-child-width-1-2@m uk-grid-small uk-padding-small">
-       <div>
+       <div class="uk-padding uk-padding-remove-vertical">
          <div uk-slideshow="animation: slide">
             @php
                 $image_path =  explode('|', $data[0]['image_path']);
@@ -44,18 +44,17 @@
        </div>
        <div id="{{$data[0]['id']}}">
         <h2 class="uk-text-bold uk-margin-remove content-title">{{$data[0]['title']}}</h1>
-        <h4 class="uk-margin-remove uk-text-bold x-color-theme-public-text">
+        <p class="uk-text-bold x-color-theme-public-text x-font-18 uk-margin-small-top">
           @if ($data[0]['price_promo'] > 0 )
           <span class="uk-width-expand  uk-margin-remove uk-text-danger" style="text-decoration: line-through;">Rp. {{ number_format($data[0]['price'])}}</span> - 
           <span class="uk-width-expand  uk-margin-remove price-product">Rp. {{ number_format($data[0]['price_promo'])}}</span>
-          
           @else
-
             <span class="price-product">Rp. {{ number_format($data[0]['price'])}} </span>
           @endif
           <span data-src="{{asset('storage/'.$data[0]['image_thumb'])}}" class="content-img_thumb"></span>
           <span href="{{Request::url()}}" class="url_product"></span>
-        </h4>
+        </p>
+        <hr>
         <p style="white-space: pre-wrap">{{$data[0]['short_description']}}</p>
         <div>
           
@@ -69,7 +68,7 @@
           <div class="uk-visible@m">
             <div class="uk-text-bold x-font-14 ">Kategori : 
               @forelse ($categories as $category)
-              <a href="#" class="x-color-theme-text uk-button-text"> {{ $category['name']}}</a>,  
+              <a href="{{url('product?cek_category='.$category['id'])}}" class="x-color-theme-text uk-button-text"> {{ $category['name']}}</a>,  
               @empty
               @endforelse
             </div>

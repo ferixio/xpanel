@@ -36,11 +36,27 @@
         border-radius: 5px 5px 0 0;
       }
 
-      @media screen and (max-width: 799px){
+      
+      .x-trans-up{
+
+        transition: .3s ease-in-out;
+      }
+      .x-trans-up:hover{
+        transform: translateY(-10px);
+      }
+
+      @media screen and (max-width: 601px){
         .content-img_thumb{
           max-height: 220px !important;
         }
+        .title-product{
+          font-size: 12px !important
+        }
+        .content-img_thumb{
+          height:170px !important;
+        }
       }
+     
      
     </style>
     
@@ -53,6 +69,11 @@
     
     @yield('content')
 
+    <div class="x-trans-up uk-position-fixed uk-position-bottom-right x-padding-10 x-color-theme uk-border-circle" style="bottom:20px;right:20px;z-index:100">
+      
+    <a href="https://wa.me/{{$wa}}" class="uk-icon x-white-text" target="_blank" uk-icon="icon: whatsapp;ratio:1.4"></a>
+    </div>
+
     <div id="modal-view" uk-modal>
       <div class="uk-modal-dialog uk-padding uk-padding-remove-horizontal" >
         <div class="uk-modal-body " uk-overflow-auto>
@@ -64,8 +85,8 @@
         
           <div>
             <h4 id="title-preview" class="uk-margin-medium-top uk-text-bold uk-margin-remove-bottom"></h4>
-            <h4 id="price-preview" class="uk-text-bold x-color-theme-public-text uk-margin-remove"></h4>
-            <p id="short-description-preview" class="x-font-14" style="white-space: pre-wrap;"></p>
+            <h4 id="price-preview" class="uk-text-bold x-color-theme-public-text x-font-14 uk-margin-remove"></h4>
+            <p id="short-description-preview" class="x-font-12" style="white-space: pre-wrap;"></p>
             <input type="text" name="" id="txt-url-share" style="display: none">
           </div>
 
@@ -98,6 +119,7 @@
         $('.pagination li [rel=next]').html('<span uk-pagination-next></span>');
         $('.pagination li[aria-label="Next »"] span').html('<span uk-pagination-next></span>');
         $('.pagination li[aria-label="« Previous"] span').html('<span uk-pagination-previous></span>');
+        
         
         $('.btn-add-cart').click(function (e) { 
           e.preventDefault();

@@ -30,6 +30,6 @@ class RegisterMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('Mails.Register');
+        return $this->markdown('mails.Register');
     }
 }

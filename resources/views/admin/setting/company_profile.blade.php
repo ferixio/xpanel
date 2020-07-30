@@ -8,7 +8,7 @@
 
 <div class="uk-padding uk-box-shadow-small x-font-12">
   <input type="file" name="fl-upload" id="fl-upload" class="uk-hidden" accept="image/*">
-  <form id="form-setting" action="{{url('xpanel/setting/company-profile')}}" method="POST">
+  <form id="form-setting" method="POST">
     @csrf
     <div class="dropzone uk-margin-small uk-flex uk-flex-middle uk-child-width-auto"> 
       <div id="x-drop"  class="uk-text-center uk-padding-small" style="height: 150px !important;width:150px !important"> 
@@ -61,6 +61,10 @@
         <div>
           <label for="">Alamat</label> <br>
           <textarea name="alamat" id="" style="width:100%;height:100px;padding:10px !important">{{ $data['ST-0002']['isi']}}</textarea>
+        </div>
+        <div>
+          <label for="" class="">Link google maps</label>
+          <input type="text" name="maps" class="uk-input" placeholder="masukan link google maps disini"value="{{ $data['ST-0009']['isi']}}">
         </div>
       </div>
     </div>

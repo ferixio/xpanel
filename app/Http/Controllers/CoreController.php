@@ -210,6 +210,7 @@ class CoreController extends Controller
       Setting::where('kode','ST-0006')->update(['isi' => $request['telp']]);
       Setting::where('kode','ST-0007')->update(['isi' => json_encode($request['social-media'])]);
       Setting::where('kode','ST-0008')->update(['isi' => json_encode($request['akun-bank'])]);
+      Setting::where('kode','ST-0009')->update(['isi' => $request['maps']]);
 
       $request->session()->flash('proses_simpan', '1');
 

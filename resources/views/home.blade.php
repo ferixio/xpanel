@@ -15,17 +15,17 @@
     <x-public.section.slideshow1 />
     <x-public.section.template1 />
    
-    <section class="uk-container uk-padding uk-margin-xlarge-top">
+    <section class="uk-container uk-margin-xlarge-top">
       <div class="uk-text-center">
         <h2 class="uk-text-bold">New Variants</h2>
-        <p>Sebuah kreasi dengan citarasa dan komposisi yang presisi,
-          <br> Tengok berbagai jenis variant baru dari <b>Sugar Pastry Brownies</b>.
+        <p class="uk-align-center" style="max-width:450px">Sebuah kreasi dengan citarasa dan komposisi yang presisi,
+          Tengok berbagai jenis variant baru dari <b>Sugar Pastry Brownies</b>.
         </p>
       </div>
       
       <div class="uk-padding uk-position-relative" uk-slider="autoplay: true;pause-on-hover:false;autoplay-interval:4000">
         <div class="uk-slider-container uk-padding">
-          <ul class="uk-slider-items uk-child-width-1-3@m uk-grid">
+          <ul class="uk-slider-items uk-child-width-1-3@m uk-grid" >
             <x-public.section.grid1 :data="$data" />
           </ul>
         </div>
@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div id="x-grid" class="uk-flex   uk-grid-small uk-padding-small uk-flex-center uk-grid-match uk-child-width-1-4@m uk-child-width-1-2" uk-grid>
+      <div id="x-grid" class="uk-flex   uk-grid-small uk-padding-small uk-flex-center uk-grid-match uk-child-width-1-4@m uk-child-width-1-2" uk-grid style="transform: translateX(10px) ">
           <x-public.section.grid1 :data="$data" />
       </div>
            
@@ -58,29 +58,29 @@
     
     <section class=" uk-padding uk-container">
       <div class="uk-text-center">
-        <h2 class="uk-text-bold">Promo and Sweet Story</h2>
-        <p>keep in touch with us, jangan lewatkan promo dan cerita manis dari <span class="uk-text-bold">Sugar Pastry Brownies</span>.
-          <br> karena yang <span class="uk-text-bold">manis</span> selalu bisa membuat kita tersenyum.
+        <h2 class="uk-text-bold">Sweet Story</h2>
+        <p class="uk-align-center" style="max-width: 450px">keep in touch with us, jangan lewatkan promo dan cerita manis dari <span class="uk-text-bold">Sugar Pastry Brownies</span>.
+           karena yang <span class="uk-text-bold">manis</span> selalu bisa membuat kita tersenyum.
         </p>
       </div>
-      <x-public.section.slider2 />
+      <x-public.section.slider2 :data="$article"/>
 
       
 
       <img class="uk-align-center uk-responsive-width uk-padding" data-src="{{asset('storage/uploads/page/chef.jpg')}}" alt="" srcset="" uk-img style="max-height: 450px;">
       <blockquote cite="#" class="uk-text-center">
         <p class="uk-margin-small-bottom">"A piece of brownies a day keeps your day be sweet until you sleep."</p>
-        <footer>Someone famous in <cite><a href="#" class="x-color-theme-text uk-text-bold">Sugar Pastry Brownies</a></cite></footer>
+      <footer>Someone famous in <cite><a href="{{url('/')}}" class="x-color-theme-text uk-text-bold">Sugar Pastry Brownies</a></cite></footer>
       </blockquote>
-      <div class="uk-margin-medium">
+      {{-- <div class="uk-margin-medium">
         <form action="#" method="post" class="uk-flex uk-flex-center uk-child-width-auto uk-flex-middle uk-flex-column">
           <input type="email" class="uk-input uk-margin-small-right" placeholder=" Enter your email to subscribe every sweet story. " style="min-width:320px">
           <button type="submit" class="uk-button uk-button-default">Subscribe</button>
         </form>
-      </div>
+      </div> --}}
 
     
       
     </section>
-
+   
 @endsection

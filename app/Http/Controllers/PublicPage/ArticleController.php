@@ -17,6 +17,11 @@ class ArticleController extends Controller
       
       $id_category = explode('|' , $data[0]['category']);
       $categories = Category::whereIn('id', $id_category)->get();
-      return view('product_detail', compact('data', 'categories'));
+
+      if ($data[0]['category_page'] == 'product') {
+        return view('product_detail', compact('data', 'categories'));
+      }else{
+        return view('article_detail', compact('data', 'categories'));
+      }
     }
 }

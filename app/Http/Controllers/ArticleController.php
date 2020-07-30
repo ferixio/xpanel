@@ -168,6 +168,7 @@ class ArticleController extends Controller
         //
         $data = $content;
         unset($data['id']);
+        unset($data['viewer']);
         if ($request['txt-with-image'] !== 'with') {
           $data['image_path'] = '';
           $data['image_thumb'] = '';

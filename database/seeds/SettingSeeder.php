@@ -59,6 +59,11 @@ class SettingSeeder extends Seeder
             'keterangan' => 'bank account',
             'isi'=> ''
           ],
+          [
+            'kode' => 'ST-0009',
+            'keterangan' => 'link google maps',
+            'isi'=> ''
+          ],
 
         ];
 
