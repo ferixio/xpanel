@@ -1,72 +1,37 @@
 @extends('layouts.public')
 @section('content')
+<style>
+  .x-color-red-text{
+    color:#E81133;
+  }
+  .uk-button-default , .uk-button-default-white-hover{
+    background-color:#E81133 !important;
+    border-color: #E81133 !important;
+  }
+  .uk-button-default:hover{
+    color:#E81133 !important;
+  }
+  .uk-button-default-white-hover:hover{
+    color:white !important;
+    border-color:white !important;
+  }
 
-  <section class="uk-text-center uk-height-small uk-background-cover uk-position-relative" data-src="{{asset('storage/uploads/page/bg_produk.jpg')}}" alt="" srcset="" uk-img  >
-    <div class=" uk-position-cover ">
+  @media screen and (max-width: 900px){
+    #coming_soon{
+      transform: translateX(0px) !important;
+    }
+  }
+</style>
 
-      <h3 class="uk-position-center uk-text-bold x-font-32 x-white-text uk-text-uppercase" style="text-shadow: 2px 4px 5px #4e4e4e;">Daftar Produk Kami</h3>
-    </div>
-  </section>
+<section  id="top-banner" class="uk-background-norepeat uk-background-cover uk-background-center-right x-fullheight" style="background-image: url({{asset('storage/uploads/page/coming_soon.jpg')}});background-color:#F5F5F5">
+  <div class="uk-height-1-1 uk-flex-center uk-flex uk-flex-column uk-padding-large ">
 
-  <section class="uk-container uk-padding">
-    <form id="form-search" method="GET" >
-    <div class="uk-grid-collapse" uk-grid>
-     
-      <div class="uk-width-expand uk-padding uk-padding-remove-vertical">
-        <div class="uk-grid-small uk-flex uk-flex-middle uk-margin-medium-bottom" uk-grid>
-            <div class="uk-search uk-search-default uk-width-expand@m">
-              <input type="hidden" name="sort" id="sort" value="{{$sort}}">
-              <input type="hidden" name="paginate" id="paginate" value="{{$paginate}}">
-              <input type="hidden" name="cek_category" id="cek_category" {{$filter}}>
-              <button type="submit" class="uk-search-icon-flip" uk-search-icon></button>
-              <input id="keyword" name="keyword" class="uk-search-input" type="search" placeholder="Pencarian ... " value="{{$keyword}}">
-           
-            </div>
-            
-            <div class="uk-width-auto@m" style="min-width: 350px;">
-              <ul class="uk-iconnav uk-child-width-expand uk-text-center uk-padding uk-padding-remove-vertical uk-flex uk-flex-middle">
-                <li><a id="sort-asc" href="" uk-icon="icon: pull" uk-tooltip="title: Urutkan dari murah ke mahal"></a></li>
-                <li><a  id="sort-desc"  href="#" uk-icon="icon: push" uk-tooltip="title: Urutkan dari mahal ke murah"></a></li>
-                <li><a id="btn-filter" href="#" uk-toggle="target: #canvas-category"  uk-icon="icon: settings" uk-tooltip="title: Filter berdasarkan kategori"></a></li>
-              </ul>
-            </div>
-        </div>
-
-        <div id="x-grid" class="uk-flex   uk-grid-small uk-flex-center uk-grid-match uk-child-width-1-4@m uk-child-width-1-2" uk-grid style="transform: translateX(10px) ">
-            <x-public.section.grid1 :data="$data" />
-        </div>
-        <hr>
+    <p id="coming_soon" class="x-font-64 uk-text-capitalize uk-text-right x-white-text" style="line-height: 80px;transform: translateX(-200px);line-height: 100px"><b>Delicious page</b> <br> will <b class="x-color-red-text">coming</b> soon</p>
   
-        <div class="uk-padding uk-padding-remove-vertical uk-grid-small uk-flex uk-flex-middle uk-text-center" uk-grid>
-          <div class="uk-width-auto">
-          
-              <select name="slc-paginate" id="slc-paginate" class="uk-select uk-form-small"  uk-tooltip="title: Count of dataview" style="width:60px">
-                <option value="12" {{ request()->paginate == 12 || request()->paginate == null ? 'selected' : ''}}>12</option>
-                <option value="24" {{ request()->paginate == 24  ? 'selected' : ''}}>24</option>
-                <option value="48" {{ request()->paginate == 48  ? 'selected' : ''}}>48</option>
-                <option value="96" {{ request()->paginate == 96  ? 'selected' : ''}}>96</option>
-              </select>
-          </div>
+  </div>
+</section>
 
-          <div class="uk-width-expand">
-            
-            {{ $data->links() }}
-            
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div id="canvas-category" uk-offcanvas="flip:true">
-      <div class="uk-padding-small uk-offcanvas-bar uk-box-shadow-small">
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <p class="uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-small uk-text-uppercase">Category Product</p>
-        <div id="list-category" class=" uk-padding-small "></div>
-        {{-- <button class="uk-button uk-button-default uk-align-center" id="btn-submit-filter">Filter Product</button> --}}
-      </div>
-    </div>
-  </form>
-  </section>
 @endsection
 
 <script>

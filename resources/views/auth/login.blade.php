@@ -19,7 +19,7 @@
 </head>
 <body>
 	<section uk-grid>
-    <div class="uk-width-1-2@m uk-visible@m  uk-inline uk-background-cover x-fullheight x-color-theme" data-src="{{ asset('/img/bg.png') }}" uk-img>
+    <div class="uk-width-1-2@m uk-visible@m  uk-inline uk-background-cover x-fullheight " data-src="{{ asset('/img/bg.png') }}" uk-img style="background: #078285;">
         <img src="{{ asset('/img/logo.png')}}" alt="logo" srcset=""  class="uk-position-center" style="width:200px; height:200px">
     </div>
     

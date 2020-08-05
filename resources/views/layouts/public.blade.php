@@ -5,20 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'laxavel') }}</title>
+    <meta name="description" content="website {{ config('app.name', 'laxavel') }} merupakan software dan website developer dari indonesia. dimana kami menerima jasa pembuatan website dari yang sederhana sampai yang professional. jika anda sedang mencari jasa untuk bikin website, kami bisa menjadi salah satu referensi anda untuk anda pilih.">
+    <meta name="keywords" content="website , jasa pembuat website ,  jasa website  , jasa bikin website , bikin website , buat website , jasa website bagus , jasa website professional ,  jasa bikin website jepara, jasa website jepara , jasa pembuat website jepara." >
+    <meta name="robots" content="index , follow">
+    <meta name="author" content="{{ config('app.name' , 'laxavel') }}">
+    <meta name="publisher" content="{{ config('app.name' , 'laxavel') }}">
+    <link rel="canonical" href="{{Request::url()}}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/xadmin.css') }}" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="image_src" href="{{asset('storage/uploads/page/logo.png')}}"/>
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/uikit.bundle.js') }}"></script>
     
+    <title>{{ config('app.name', 'laxavel') }} - Software and Website Developer</title>
     <style>
       a{
         color: #ffffff;
       }
       a:hover{
         text-decoration: none;
-          
       }
       
      
@@ -45,7 +50,7 @@
         transform: translateY(-10px);
       }
 
-      @media screen and (max-width: 601px){
+      @media screen and (max-width: 960px){
         .content-img_thumb{
           max-height: 220px !important;
         }
@@ -55,6 +60,15 @@
         .content-img_thumb{
           height:170px !important;
         }
+        #btn-wa-bottom{
+          bottom:100px !important;
+        }
+
+        a.menu:hover{
+        color: white;
+        background: #078285;
+      }
+      
       }
      
      
@@ -64,14 +78,14 @@
 <body>
   
     <header class="uk-box-shadow-small"  uk-sticky="animation: uk-animation-slide-top;top:300;" style="background:#ffffff; height:80px;">
-      <x-public.header.header1 />
+      <x-public.header.header2 />
     </header>
     
     @yield('content')
 
-    <div class="x-trans-up uk-position-fixed uk-position-bottom-right x-padding-10 x-color-theme uk-border-circle" style="bottom:20px;right:20px;z-index:100">
+    <div id="btn-wa-bottom"  class="x-trans-up uk-position-fixed uk-position-bottom-right x-padding-10 uk-border-circle" style="bottom:20px;right:20px;z-index:100;background: #078285;">
       
-    <a href="https://wa.me/{{$wa}}" class="uk-icon x-white-text" target="_blank" uk-icon="icon: whatsapp;ratio:1.4"></a>
+      <a title="{{$x_setting['ST-0001']['isi']}}" href="https://wa.me/{{$wa}}" class="uk-icon x-white-text" target="_blank" uk-icon="icon: whatsapp;ratio:1.4"></a>
     </div>
 
     <div id="modal-view" uk-modal>
@@ -84,9 +98,9 @@
           </div>
         
           <div>
-            <h4 id="title-preview" class="uk-margin-medium-top uk-text-bold uk-margin-remove-bottom"></h4>
-            <h4 id="price-preview" class="uk-text-bold x-color-theme-public-text x-font-14 uk-margin-remove"></h4>
-            <p id="short-description-preview" class="x-font-12" style="white-space: pre-wrap;"></p>
+            <p id="title-preview" class="uk-margin-medium-top uk-text-bold uk-margin-remove-bottom x-font-18"></p>
+            <p id="price-preview" class="uk-text-bold x-color-theme-public-text x-font-14 uk-margin-remove x-font-16"></p>
+            <p id="short-description-preview" class="x-font-14" style="white-space: pre-wrap;"></p>
             <input type="text" name="" id="txt-url-share" style="display: none">
           </div>
 
@@ -94,15 +108,15 @@
         <div class="uk-modal-footer uk-flex uk-child-width-expand">
           <div id="link-detail-preview"></div>
           <div class="uk-width-auto uk-margin-small-left">
-            <a href="#" class="uk-icon-button btn-share-preview" uk-icon="social"  title="Copy link produk ini" uk-tooltip="pos: top" ></a>
-            <a href="#" class="uk-icon-button uk-text-success btn-whatsapp-preview" target="_blank" uk-icon="whatsapp"  title="Whatsapp Produk ini" uk-tooltip="pos: top" ></a>
+            <a title="Share Produk ini" href="#" class="uk-icon-button btn-share-preview" uk-icon="social"  title="Copy link produk ini" uk-tooltip="pos: top" ></a>
+            <a title="Whatsapp produk ini" href="#" class="uk-icon-button uk-text-success btn-whatsapp-preview" target="_blank" uk-icon="whatsapp"  title="Whatsapp Produk ini" uk-tooltip="pos: top" ></a>
           </div>
         </div>
       </div>
     </div>
 
-    <footer class="x-color-theme x-white-text uk-position-relative">
-      <x-public.footer.footer1 />
+    <footer class="uk-position-relative" style="background: #F8F9FA">
+      <x-public.footer.footer2 />
     </footer>
    
 
@@ -261,7 +275,7 @@
 
                         
           htmlThumb += `<li class="uk-background-contain " style="background-image:url({{asset('storage/')}}/${path})" alt="" srcset="" uk-img></li>`
-          htmlPath += `<li uk-slideshow-item="${i}" class="thumbnav"><a class="" href="#"><img data-src="{{asset('storage/')}}/${path}" alt="" srcset="" style="width:48px;height:48px;object-fit:cover" uk-img></a></li>`
+          htmlPath += `<li uk-slideshow-item="${i}" class="thumbnav"><a title="{{$x_setting['ST-0001']['isi']}}" class="" href="#"><img data-src="{{asset('storage/')}}/${path}" alt="" srcset="" style="width:48px;height:48px;object-fit:cover" uk-img></a></li>`
           i++;
         });
 
@@ -274,7 +288,7 @@
         $('.btn-whatsapp-preview').attr('href', `https://wa.me/6285641787121?text=${content}`);
        
 
-        $('#link-detail-preview').html(`<a href="${urlProduct}" class="uk-button-default uk-button">Lihat detail</a>`);
+        $('#link-detail-preview').html(`<a title="Detail Produk" href="${urlProduct}" class="uk-button-default uk-button">Lihat detail</a>`);
 
         var shortDesription  = parent.querySelector('.content-short_description').innerHTML;
         $('#img-product-preview').attr('data-src', dataSrc);
@@ -303,7 +317,7 @@
                       <div class="uk-width-epxand uk-margin-small-left uk-flex-inline">
                         <div class="uk-padding-small uk-padding-remove-vertical">
                           <p style="line-height:15px !important;margin-bottom:5px">
-                            <a href="${product.link}" class="uk-text-bold x-font-14 x-color-theme-text" >${product.name} ( ${product.qty} )</a>
+                            <a title="${product.name}" href="${product.link}" class="uk-text-bold x-font-14 x-color-theme-text" >${product.name} ( ${product.qty} )</a>
                           </p>
                           <p class="x-font-12 uk-text-muted uk-margin-remove">Harga : ${product.price}</p>
                           <div class="uk-width-auto">
@@ -315,7 +329,7 @@
                        
                       </div>
                       <div>
-                        <a id="${product.id}" href="#" class="uk-icon-button uk-button-danger btn-delete-item" uk-icon="icon: close;" style="width:32px;height:32px;"></a>
+                        <a title="Hapus" id="${product.id}" href="#" class="uk-icon-button uk-button-danger btn-delete-item" uk-icon="icon: close;" style="width:32px;height:32px;"></a>
                       </div>
                     </div>`
           total += Number(product.qty) * Number(product.price.replace(/\D/gi , ''))
@@ -392,13 +406,13 @@
                         <div class="uk-width-epxand uk-margin-small-left uk-flex-inline">
                           <div class="uk-padding-small uk-padding-remove-vertical">
                             <p style="line-height:15px !important;margin-bottom:5px">
-                              <a href="${product.link}" class="uk-text-bold x-font-14 x-color-theme-text" >${product.name}</a>
+                              <a title="${product.name}" href="${product.link}" class="uk-text-bold x-font-14 x-color-theme-text" >${product.name}</a>
                             </p>
                             <p class="x-font-12 uk-text-muted uk-margin-remove">Harga : ${product.price}</p>
                           </div>
                         </div>
                         <div>
-                          <a id="${product.id}" href="#" class="uk-icon-button uk-button-danger btn-delete-item" uk-icon="icon: close;" style="width:32px;height:32px;"></a>
+                          <a title="Hapus" id="${product.id}" href="#" class="uk-icon-button uk-button-danger btn-delete-item" uk-icon="icon: close;" style="width:32px;height:32px;"></a>
                         </div>
                       </div>`
            

@@ -10,7 +10,7 @@
 
 <img  src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" style="max-height:100px;margin-top:50px">
 <H4 style="margin:0 !important;font-size:18px;font-weight:bold">{{$x_setting['ST-0001']['isi']}}</H4>
-<p style="font-size:12px;font-weight:400">A Trully Brownies Taste</p>
+<p style="font-size:12px;font-weight:400">{{$x_setting['ST-0002']['isi']}}</p>
 <br>
 
   Halo kak <b>{{ $data->name}}</b>,  <br>

@@ -13052,7 +13052,7 @@ UIkit.use(uikit_dist_js_uikit_icons__WEBPACK_IMPORTED_MODULE_0___default.a);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xpanel\resources\js\uikit.js */"./resources/js/uikit.js");
+module.exports = __webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xitfoundation.com\resources\js\uikit.js */"./resources/js/uikit.js");
 
 
 /***/ })

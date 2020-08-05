@@ -13,13 +13,14 @@
          <div uk-slideshow="animation: slide">
             @php
                 $image_path =  explode('|', $data[0]['image_path']);
+                $image_thumb = $data[0]['image_thumb'];
                 $i = 0;
             @endphp
             @if (count($image_path) > 1 )
                <ul class="uk-slideshow-items uk-height-large" uk-lightbox>
                 @foreach ($image_path as $image)
-                    <a href="{{asset('storage/'.$image)}}">
-                      <img class="uk-background-content uk-border-rounded uk-height-max-large uk-align-center" data-src="{{asset('storage/'.$image)}}" alt="" srcset="" uk-img>
+                    <a href="{{asset('storage/'.$image)}}" class="uk-position-relative">
+                      <img class="uk-background-content uk-border-rounded uk-height-max-large cek  uk-position-center" data-src="{{asset('storage/'.$image)}}" alt="" srcset="" uk-img>
                     </a>
                     @endforeach
                </ul>
@@ -67,11 +68,11 @@
          
             <div class="uk-text-bold uk-margin-small-top x-font-14 ">
               Share produk ini : 
-              <a href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
-                <a href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
-                <a href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>
-                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: linkedin;ratio:0.8"></a>
-                <a href="https://telegram.me/share/url?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: telegram;ratio:0.8"></a>
+              <a title="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
+                <a title="twitter" href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
+                <a title="" href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>
+                <a title="lingkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: linkedin;ratio:0.8"></a>
+                <a title="telegram" href="https://telegram.me/share/url?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: telegram;ratio:0.8"></a>
             </div>
             <div class="uk-text-bold x-font-14 ">Kategori : 
               @forelse ($categories as $category)
@@ -84,5 +85,10 @@
 
      
    </section>
+   <script>
+     document.addEventListener('DOMContentLoaded',()=>{
+       $('link[rel="image_src"]').attr('href', '{{$image_thumb}}');
+     });
+   </script>
    
 @endsection

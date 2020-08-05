@@ -9,18 +9,18 @@
 
    <section class="uk-container uk-margin-large-bottom uk-margin-large-top">
      <div class="uk-grid uk-child-width-1-2@m uk-grid-small uk-padding-small">
-       <div class="uk-padding uk-padding-remove-vertical">
+       <div class="uk-padding uk-padding-remove-vertical uk-position-relative">
          <div uk-slideshow="animation: slide">
             @php
                 $image_path =  explode('|', $data[0]['image_path']);
                 $i = 0;
             @endphp
-            @if (count($image_path) > 1 )
-               <ul class="uk-slideshow-items uk-height-large" uk-lightbox>
+            @if (count($image_path) > 0 )
+               <ul class="uk-slideshow-items uk-height-large " uk-lightbox>
                 @foreach ($image_path as $image)
-                    <a href="{{asset('storage/'.$image)}}">
-                      <img class="uk-background-content uk-border-rounded uk-height-max-large uk-align-center" data-src="{{asset('storage/'.$image)}}" alt="" srcset="" uk-img>
-                    </a>
+                  <a href="{{asset('storage/'.$image)}}" class="">
+                    <img class="uk-background-content uk-border-rounded uk-position-center uk-height-max-large" data-src="{{asset('storage/'.$image)}}" alt="" srcset="" uk-img>
+                  </a>
                     @endforeach
                </ul>
                

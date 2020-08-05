@@ -9,7 +9,7 @@
   <section style="margin-bottom:-70px !important">
     <div class="uk-container uk-padding-large uk-text-center">
       <div class="uk-text-center">
-        <img class="uk-border-rounded uk-box-shadow-small" data-src="{{$x_setting['ST-0000']['isi']}}" alt="" srcset="" uk-img style="max-height: 200px">
+        <img class="uk-border-rounded uk-box-shadow-small" data-src="{{asset('storage/uploads/page/logo.png')}}" alt="" srcset="" uk-img style="max-height: 200px">
         
         <h3 class="uk-text-bold uk-text-capitalize">{{$x_setting['ST-0001']['isi']}}</h3>
       </div>

@@ -24,7 +24,7 @@
 
       <blockquote cite="#" class="uk-text-center">
         <p class="uk-margin-small-bottom">"Happy shopping and make your life easer."</p>
-      <footer>Someone famous in <cite><a href="{{url('/')}}" class="x-color-theme-text uk-text-bold">Sugar Pastry Brownies</a></cite></footer>
+      <footer>Someone famous in <cite><a href="{{url('/')}}" class="x-color-theme-text uk-text-bold">{{$x_setting['ST-0001']['isi']}}</a></cite></footer>
       </blockquote>
 
 

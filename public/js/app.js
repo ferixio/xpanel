@@ -3590,9 +3590,9 @@ document.addEventListener('DOMContentLoaded', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xpanel\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xpanel\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xpanel\resources\sass\xadmin.scss */"./resources/sass/xadmin.scss");
+__webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xitfoundation.com\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xitfoundation.com\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! D:\01_XIT\SOURCODE\website\expro\LAXAVEL\xitfoundation.com\resources\sass\xadmin.scss */"./resources/sass/xadmin.scss");
 
 
 /***/ })

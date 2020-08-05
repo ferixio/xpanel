@@ -29,7 +29,7 @@ class PageController extends Controller
       $keyword       = request()->keyword;
       $paginate      = request()->paginate !== null ? request()->paginate : 12;
       $sort          = request()->sort;
-      $page_category = request()->segment(1) == 'article' ? 'article' : 'product';
+      $page_category = request()->segment(1);
       $data          = Content::select('*');
 
       if ($sort == 'asc') {
@@ -57,14 +57,40 @@ class PageController extends Controller
         
         $category = Category::where('jenis' , 'category-article')->orderBy('name')->get();
         return view('article', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
-      }else{
+      }elseif ($page_category == 'website'){
         $data =  $data->where('category_page' , 'product')
         ->where('category' , 'like' , '%'.$filter.'%')
         ->paginate($paginate);
 
 
         $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
-        return view('product', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+        return view('website', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+      }elseif ($page_category == 'seo'){
+        $data =  $data->where('category_page' , 'product')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('seo', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+      
+      }elseif ($page_category == 'design'){
+        $data =  $data->where('category_page' , 'product')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('design', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+      
+      }elseif ($page_category == 'application'){
+        $data =  $data->where('category_page' , 'product')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('application', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
       }
 
     }

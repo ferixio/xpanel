@@ -23,6 +23,10 @@ Route::post('order', 'CoreController@order');
 Route::get('verify/{username}/{password}', 'CoreController@verify');
 
 Route::get('product', 'PageController@product');
+Route::get('website', 'PageController@product');
+Route::get('seo', 'PageController@product');
+Route::get('design', 'PageController@product');
+Route::get('application', 'PageController@product');
 Route::get('article', 'PageController@product');
 Route::view('order-sukses', 'order_sukses');
 Route::get('product/detail/{slug}', 'PublicPage\ArticleController@index');
