@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="website {{ config('app.name', 'laxavel') }} merupakan software dan website developer dari indonesia. dimana kami menerima jasa pembuatan website dari yang sederhana sampai yang professional. jika anda sedang mencari jasa untuk bikin website, kami bisa menjadi salah satu referensi anda untuk anda pilih.">
-    <meta name="keywords" content="website , jasa pembuat website ,  jasa website  , jasa bikin website , bikin website , buat website , jasa website bagus , jasa website professional ,  jasa bikin website jepara, jasa website jepara , jasa pembuat website jepara." >
+
+    @php
+      if (Request::segment(2) == 'detail') {
+        $title =  Request::segment(3) . '('. Request('id') .')';
+      }else{
+        $suffix ='';
+        if (Request::segment(1) == 'website'){
+            $suffix = 'jasa pembuatan website jepara';
+        }
+        $title = config('app.name', 'laxavel').'  '. $suffix ;
+      }
+    @endphp
+
+    
+    <meta name="description" content="{{$title}}  merupakan software dan website developer dari indonesia khususnya jepara. dimana kami menerima jasa pembuatan website /  bikin website dari yang sederhana sampai yang professional. Selain website kami juga membuka jasa optimasi seo. agar website bisa terindeks oleh mesin pencari.">
+
+    <meta name="keywords" content=" website , jasa pembuat website ,  jasa website  , jasa bikin website , bikin website , buat website , jasa website bagus , jasa website professional ,  jasa bikin website jepara, jasa website jepara , jasa pembuat website jepara, jasa pembuatan website , jasa web jepara" >
+
     <meta name="robots" content="index , follow">
     <meta name="author" content="{{ config('app.name' , 'laxavel') }}">
     <meta name="publisher" content="{{ config('app.name' , 'laxavel') }}">
@@ -17,8 +33,23 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/uikit.bundle.js') }}"></script>
     
+    <title> {{$title}}</title>
+   
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136823662-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136823662-2');
+</script>
+    
     <title>{{ config('app.name', 'laxavel') }} - Software and Website Developer</title>
     <style>
+      html{
+        scroll-behavior: smooth;
+      }
       a{
         color: #ffffff;
       }
@@ -65,9 +96,12 @@
         }
 
         a.menu:hover{
-        color: white;
-        background: #078285;
-      }
+            color: white;
+            background: #078285;
+          }
+       .x-font-64{
+            font-size:32px !important;   
+        }
       
       }
      
@@ -76,6 +110,7 @@
     
 </head>
 <body>
+   
   
     <header class="uk-box-shadow-small"  uk-sticky="animation: uk-animation-slide-top;top:300;" style="background:#ffffff; height:80px;">
       <x-public.header.header2 />
@@ -124,7 +159,42 @@
     <script>
       document.addEventListener('DOMContentLoaded',()=>{
 
-       
+       // Select all links with hashes
+        $('a[href*="#"]')
+          // Remove links that don't actually link to anything
+          .not('[href="#"]')
+          .not('[href="#0"]')
+          .click(function(event) {
+            // On-page links
+            if (
+              location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+              && 
+              location.hostname == this.hostname
+            ) {
+              // Figure out element to scroll to
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              // Does a scroll target exist?
+              if (target.length) {
+                // Only prevent default if animation is actually gonna happen
+                event.preventDefault();
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 1000, function() {
+                  // Callback after animation
+                  // Must change focus!
+                  var $target = $(target);
+                  $target.focus();
+                  if ($target.is(":focus")) { // Checking if the target was focused
+                    return false;
+                  } else {
+                    $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                    $target.focus(); // Set focus again
+                  };
+                });
+              }
+            }
+          });
 
         $('.pagination').addClass('uk-pagination uk-flex uk-flex-middle uk-flex-right x-font-12');
         $('.active').addClass('uk-active');

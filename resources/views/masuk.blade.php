@@ -5,7 +5,7 @@
     <form action="{{url('login')}}" method="POST" class="uk-form-stacked uk-align-center uk-box-shadow-small uk-padding" style="max-width: 300px" >
         @csrf
        
-        <h3 class="uppercase uk-text-center x-color-theme-text uk-margin-remove" style="letter-spacing:3px;"><b>Halaman Login</b></h3>
+        <h1 class="uppercase uk-text-center x-color-theme-text uk-margin-remove" style="letter-spacing:3px;"><b>Halaman Login</b></h1>
         <p class="uk-meta uk-text-center x-font-12 uk-margin-remove">Selamat datang kembali! Silahkan Masuk.</p> <br>
   
         <div class="uk-margin">

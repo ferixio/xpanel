@@ -3,7 +3,7 @@
   <section class="uk-text-center uk-height-small uk-background-cover uk-position-relative" data-src="{{asset('storage/uploads/page/bg_produk.jpg')}}" alt="" srcset="" uk-img  >
     <div class=" uk-position-cover ">
 
-      <h3 class="uk-position-center uk-text-bold x-font-32 x-white-text uk-text-uppercase" style="text-shadow: 2px 4px 5px #4e4e4e;">Detail Produk</h3>
+      <h3 class="uk-position-center uk-text-bold x-font-32 x-white-text uk-text-uppercase" style="text-shadow: 2px 4px 5px #4e4e4e;">Details Product</h3>
     </div>
   </section>
 
@@ -60,20 +60,20 @@
           
             <div class="uk-margin-medium-bottom">
               <input id="txt-qty-pesan" type="number" value="1" min="1" class="uk-input uk-text-center" style="max-width: 80px;padding-left: 10px !important" required  title="Masukan jumlah beli disini" uk-tooltip="pos:right" >
-              <p class="uk-text-bold uk-text-italic x-font-12 uk-margin-remove">*masukan jumlah yang ingin anda pesan.</p>
+              <p class="uk-text-bold uk-text-italic x-font-12 uk-margin-remove">*Enter count on above.</p>
             </div>
-            <button class="uk-button uk-button-default btn-add-cart uk-width-auto@m uk-width-expand" style="min-width:235px">Tambah ke keranjang</button>
-            <button class="uk-button uk-button-default uk-margin-small btn-whatsapp uk-width-auto@m uk-width-expand" style="min-width:235px">Pesan via whatsapp</button>
+            <button class="uk-button uk-button-default btn-add-cart uk-width-auto@m uk-width-expand" style="min-width:235px">Add to cart</button>
+            <button class="uk-button uk-button-default uk-margin-small btn-whatsapp uk-width-auto@m uk-width-expand" style="min-width:235px">Chat Whatsapp</button>
           <hr>
           <div class="uk-visible@m">
-            <div class="uk-text-bold x-font-14 ">Kategori : 
+            <div class="uk-text-bold x-font-14 ">Category : 
               @forelse ($categories as $category)
               <a href="{{url('product?cek_category='.$category['id'])}}" class="x-color-theme-text uk-button-text"> {{ $category['name']}}</a>,  
               @empty
               @endforelse
             </div>
             <div class="uk-text-bold uk-margin-small-top x-font-14 ">
-              Share produk ini : 
+              Share this product : 
               <a href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
                 <a href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
                 <a href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>
@@ -89,21 +89,21 @@
      </div>
      <div class="uk-margin-large-top uk-padding">
         <ul class="uk-subnav uk-subnav-pill" uk-switcher style="border-bottom:1px solid #e2e2e2;">
-          <li><a href="#">Deskripsi Lengkap</a></li>
+          <li><a href="#">Details of description</a></li>
         </ul>
         <ul class="uk-switcher">
           <li >
             {!! $data[0]['description'] !!}
 
             <div class="uk-hidden@m uk-margin-medium-top">
-              <div class="uk-text-bold x-font-14 ">Kategori : 
+              <div class="uk-text-bold x-font-14 ">Category : 
                 @forelse ($categories as $category)
                 <a href="#" class="x-color-theme-text uk-button-text"> {{ $category['name']}}</a>,  
                 @empty
                 @endforelse
               </div>
               <div class="uk-text-bold uk-margin-small-top x-font-14 ">
-                Share produk ini : 
+                Share this product : 
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{URL::current()}}" target="_blank" class="uk-icon" uk-icon="icon: facebook;ratio:0.8"></a>
                 <a href="https://twitter.com/share?url={{URL::current()}}" class="uk-icon" target="_blank" uk-icon="icon: twitter;ratio:0.8"></a>
                 <a href="https://pinterest.com/pin/create/button/?url={{URL::current()}}"  target="_blank"class="uk-icon" uk-icon="icon: pinterest;ratio:0.8"></a>

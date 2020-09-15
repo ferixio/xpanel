@@ -22,6 +22,10 @@ class PageController extends Controller
     public function content(){
       dump(request()->query('type'));
     }
+
+    public function sample(){
+      return view('sample.'.request('page'));
+    }
     
     public function product(){
       $category = [];
@@ -91,6 +95,24 @@ class PageController extends Controller
 
         $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
         return view('application', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+      }
+      elseif ($page_category == 'netboard'){
+        $data =  $data->where('category_page' , 'article')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('netboard', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
+      }
+      elseif ($page_category == 'product'){
+        $data =  $data->where('category_page' , 'product')
+        ->where('category' , 'like' , '%'.$filter.'%')
+        ->paginate($paginate);
+
+
+        $category = Category::where('jenis' , 'category-product')->orderBy('name')->get();
+        return view('product', compact('category', 'data' , 'keyword', 'sort' , 'paginate' , 'filter'));
       }
 
     }

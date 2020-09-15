@@ -27,10 +27,19 @@ Route::get('website', 'PageController@product');
 Route::get('seo', 'PageController@product');
 Route::get('design', 'PageController@product');
 Route::get('application', 'PageController@product');
+Route::get('netboard', 'PageController@product');
 Route::get('article', 'PageController@product');
+Route::get('sample/{page}', 'PageController@sample');
 Route::view('order-sukses', 'order_sukses');
 Route::get('product/detail/{slug}', 'PublicPage\ArticleController@index');
 Route::get('article/detail/{slug}', 'PublicPage\ArticleController@index');
+Route::view('team', 'team');
+Route::view('client', 'client');
+Route::view('about-us', 'about');
+Route::view('contact-us', 'contact');
+Route::view('terms-and-conditions', 'terms');
+Route::view('help-and-support', 'help');
+Route::view('sitemap', 'sitemap');
 
 
 Route::group(['middleware' => ['auth']], function () {

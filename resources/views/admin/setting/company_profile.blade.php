@@ -94,6 +94,13 @@
         </div>
       </div>
       <div class="uk-flex uk-flex-column">
+        <label for="">Youtube</label>
+        <div class="uk-inline">
+          <span class="uk-form-icon" uk-icon="icon: youtube"></span>
+          <input class="uk-input" name="social-media[yt]" value="{{is_null($social_media) ? '' : $social_media->yt }}">
+        </div>
+      </div>
+      <div class="uk-flex uk-flex-column">
         <label for="">twitter</label>
         <div class="uk-inline">
           <span class="uk-form-icon" uk-icon="icon: twitter"></span>

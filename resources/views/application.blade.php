@@ -2,14 +2,14 @@
 @section('content')
 <style>
   .x-color-red-text{
-    color:#E81133;
+    color:#4697FF;
   }
   .uk-button-default , .uk-button-default-white-hover{
-    background-color:#E81133 !important;
-    border-color: #E81133 !important;
+    background-color:#4697FF !important;
+    border-color: #4697FF !important;
   }
   .uk-button-default:hover{
-    color:#E81133 !important;
+    color:#4697FF !important;
   }
   .uk-button-default-white-hover:hover{
     color:white !important;
@@ -17,250 +17,168 @@
   }
 </style>
 
-<section  id="top-banner" class="uk-background-norepeat uk-background-bottom-right x-fullheight" style="background-image: url({{asset('storage/uploads/page/banner-web.jpg')}});background-color:#F5F5F5">
-  <div class="uk-height-1-1 uk-flex-center uk-flex uk-flex-column uk-padding-large uk-visible@m">
-
-    <p class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">FERCOVA</p>
-    <p class="x-font-24" style="max-width:650px;">Stunning template website from XIT foundation. It's totally Simply and Crazy Fast website ever</p>
-    <a href="#" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:170px;"> Explore More </a>
+<div class="uk-margin-large uk-container" style="min-height:80vh">
+  <h1 class="uk-hidden">XIT foundation - jasa pembuatan aplikasi retail</h1>
+  <div class="  uk-child-width-1-2@m uk-child-width-1-1  uk-grid uk-text-left@m uk-text-center">
+    <div class="uk-background-contain" data-src="{{asset('storage/uploads/page/desktop.gif')}}" alt="" srcset="" uk-img style="min-height: 300px">
+    </div>
+    <div class="uk-padding-large  ">
+      <h3 class="uk-text-bold uk-uppercase x-font-64">Application for Management</h3>
+      <hr>
+      <p class="uk-margin-remove-vertical uk-align-center uk-align-left@m" style="max-width:500px">Do you feel inconvenience about financial report, Customer complain and stock management? we bringing easer way to can handle that. <br><br> You can try  our application for management<br> <b>Fercova X5</b> </p> 
+      <a href="#detail" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:230px;"> What is Fercova X5? </a>
+      
+      
+    </div>
   </div>
-</section>
+</div>
+<hr>
 
-<div class="uk-flex-center uk-flex uk-flex-column uk-padding  uk-text-center uk-hidden@m">
+<div id="detail"  class="uk-margin-xlarge uk-container" style="">
 
-  <p class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">LAXAVEL</p>
-  <p class="x-font-24" style="max-width:650px;">Stunning template website from XIT foundation. It's totally Simply and Crazy Fast website ever</p>
-  <a href="#" title="Explore more" class="uk-button uk-align-center uk-button-default uk-margin-medium-top" style="width:170px;"> Explore More </a>
-  <hr>
+  <div class="  uk-child-width-1-2@m uk-child-width-1-1  uk-grid uk-text-left@m uk-text-center">
+   
+    <div class="uk-padding uk-padding-large ">
+      <h3 class="uk-text-bold uk-uppercase x-font-64">Fercova X5</h3>
+      <hr>
+      <p class="uk-margin-remove-vertical uk-align-center uk-align-left@m" style="max-width:500px">If you have bussiness in minimarket /  retail bussiness, you should to try <b>Fercova X5</b>. It has many features you can use to handle minimarket proses, like stock management, Sales Report ,  debts and receivables report until on your accounting report. <br><br> Call us we'll show you all kind of feature you need in retail bussiness. </p> 
+    <a href="http://wa.me/{{$wa}}?text=kak, mau tanya tentang Aplikasi fercova X5 bisa?" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:260px;"> Ask about Fercova X5 </a>
+      
+      
+    </div>
+    
+
+    <div class="uk-position-relative" uk-slideshow="animation: slide">
+        <ul class="uk-slideshow-items uk-border-rounded uk-overflow-hidden uk-box-shadow-small uk-margin-medium-bottom" uk-lightbox>
+          @for ($i = 1; $i <= 10; $i++)
+            <a href="{{asset('storage/uploads/page/fercova/'.$i.'.jpg')}}">
+              <img data-src="{{asset('storage/uploads/page/fercova/'.$i.'.jpg')}}" alt="" srcset="" uk-img>
+            </a>
+          @endfor
+        </ul>
+    
+        <div class="uk-position-bottom-center-out uk-position-small">
+            <ul class="uk-thumbnav uk-child-width-1-5">
+              @for ($i = 1; $i <= 10; $i++)
+              <li uk-slideshow-item="{{$i-1}}"  class="uk-margin-small" ><a href="#"><img data-src="{{asset('storage/uploads/page/fercova/'.$i.'.jpg')}}"  width="100" alt="" uk-img></a></li>
+              @endfor
+               
+            </ul>
+        </div>
+    
+    </div>
+  </div>
 </div>
 
-<section class="uk-container uk-padding uk-margin-large-top">
+
+<section class="uk-container uk-padding uk-margin-large-top" style="margin-top:200px !important">
   <div class="uk-margin-large uk-text-center">
-    <h2 class="uk-text-bold uk-text-capitalize">Price List of Create a website</h2>
-    <p class="uk-align-center" style="max-width:550px">Thousands theme of laxavel ready to use, choose one <br>and  make it into your own.
+    <h2 class="uk-text-bold uk-text-capitalize">Price List of Fercova X5</h2>
+    <p class="uk-align-center" style="max-width:550px">Many feature we offering to you <br>but only used what you need is better.
     </p>
   </div>
  <div class="uk-grid uk-child-width-1-1 uk-child-width-1-4@m uk-text-center uk-grid-small uk-grid-match">
    
-  <div class="uk-position-relative uk-margin-medium-top" style="min-height:450px">
+  <div class="uk-position-relative uk-margin-medium-top" style="min-height:550px">
      <div class="uk-card uk-padding-small uk-card-default uk-card-hover">
-       <h3 class="uk-text-bold uk-margin-medium-top">Free</h3>
-       <p class="uk-text-meta">IDR 0 / month</p>
+       <h3 class="uk-text-bold uk-margin-medium-top">Small Company</h3>
+       <p class="uk-text-meta">IDR 1.500.000</p>
        <hr>
        <ul class="uk-text-left uk-margin-medium-top uk-padding-small">
-         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Shared Hosting 250MB</li>
-         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Domain TLD ( .laxavel.com )</li>
-         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Theme Standart</li>
-         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> 1 User account</li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Purchace Process</li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Sales Process</li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Debt Process</li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Credit Process  </li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Stock Management</li>
+         <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Standart Report</li>
        </ul>
       <div class="uk-position-bottom uk-position-small">
         <hr>
-        <button class="uk-button uk-button-default">Order now</button>
+        <a href="http://wa.me/{{$wa}}?text=kak, mau pesan Aplikasi fercova X5 yang small company bisa?" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:260px;"> Order Now</a>
       </div>
      </div>
    </div>
    
   <div class="uk-position-relative  uk-margin-medium-top" style="min-height:700px">
-     <div class="uk-card uk-padding-small uk-card-default uk-card-hover uk-border-rounded  " style="background: #04788d;color:white;">
-       <h3 class="uk-text-bold uk-margin-medium-top x-white-text">Standart</h3>
-       <p class="">IDR 62.500,- / month</p>
+     <div class="uk-card uk-padding-small uk-card-default uk-card-hover uk-border-rounded  " style="background: #1863C6;color:white;">
+       <h3 class="uk-text-bold uk-margin-medium-top x-white-text">standart company</h3>
+       <p class="">IDR 2.500.000</p>
        <hr>
        <ul class="uk-text-left uk-margin-medium-top uk-padding-small">
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Hosting Standart 1GB</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Domain TLD <br>
-          <span class="uk-margin-small-left"> ( .com , .id , .co.id , .online )</span>
-          </li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Theme Standart</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>1 User Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>1 Email Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Free Training</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Support standart</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Renewal hosting + domain <br>
-            <b class="uk-margin-medium-left">(IDR 500.000 / year)</b>
-          </li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Purchace Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Sales Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Debt Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Credit Process  </li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Stock Management</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Standart Report</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Profit and Loss report</li>
        </ul>
        <div class="uk-position-bottom uk-position-small">
         <hr>
-        <button class="uk-button uk-button-default-white-hover">Order now</button>
+        <a href="http://wa.me/{{$wa}}?text=kak, mau pesan Aplikasi fercova X5 yang standart company bisa?" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:260px;"> Order Now</a>
       </div>
      </div>
    </div>
    
-  <div class="uk-margin-medium-top">
+  <div class="uk-margin-medium-top uk-position-relative" style="min-height:700px">
      <div class="uk-card uk-padding-small uk-card-default uk-card-hover">
-       <h3 class="uk-text-bold uk-margin-medium-top">Premium</h3>
-       <p class="uk-text-meta">IDR 375.000,- / month</p>
+       <h3 class="uk-text-bold uk-margin-medium-top">Medium company</h3>
+       <p class="uk-text-meta">IDR 4.500.000</p>
        <hr>
        <ul class="uk-text-left uk-margin-medium-top uk-padding-small">
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Hosting Standart 20GB</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Domain TLD <br>
-          <span class="uk-margin-small-left"> ( .com , .id , .co.id , .online )</span>
-          </li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Theme Premium</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>SEO Optimation</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Multi User Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Multi Email Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Free Training</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Support Premium</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Renewal hosting + domain <br>
-            <b class="uk-margin-medium-left">(IDR 2.500.000 / year)</b></li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Purchace Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Sales Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Debt Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Credit Process  </li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Stock Management</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Standart Report</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Profit and Loss report</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Balance Sheet</li>
        </ul>
-       <hr>
-       <button class="uk-button uk-button-default">Order now</button>
+       <div class="uk-position-bottom uk-position-small" >
+        <hr>
+        <a href="http://wa.me/{{$wa}}?text=kak, mau pesan Aplikasi fercova X5 yang medium company bisa?" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:260px;"> Order Now</a>
+      </div>
      </div>
    </div>
    
-  <div class="uk-margin-medium-top">
+  
+   
+  <div class="uk-margin-medium-top uk-position-relative" style="min-height:700px">
      <div class="uk-card uk-padding-small uk-card-default uk-card-hover">
-       <h3 class="uk-text-bold uk-margin-medium-top">Exclusive</h3>
-       <p class="uk-text-meta">IDR 625.000,- / month</p>
+       <h3 class="uk-text-bold uk-margin-medium-top">Big company</h3>
+       <p class="uk-text-meta">IDR 7.500.000 / branch</p>
        <hr>
        <ul class="uk-text-left uk-margin-medium-top uk-padding-small">
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Hosting Standart 40GB</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Domain TLD <br>
-          <span class="uk-margin-small-left"> ( .com , .id , .co.id , .online )</span>
-          </li>
-          <li class="uk-margin-small uk-text-bold uk-color-theme-text"><span uk-icon="icon:  triangle-right"></span>Theme Exlusive</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>SEO Optimation</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Multi User Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Multi Email Account</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Free Training</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Support Premium</li>
-          <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span>Renewal hosting + domain <br>
-            <b class="uk-margin-medium-left">(IDR 2.500.000 / year)</b></li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Purchace Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Sales Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Debt Process</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Credit Process  </li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Stock Management</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Standart Report</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Profit and Loss report</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Balance Sheet</li>
+        <li class="uk-margin-small"><span uk-icon="icon:  triangle-right"></span> Multi Branch</li>
+
        </ul>
-       <hr>
-       <button class="uk-button uk-button-default">Order now</button>
+       <div class="uk-position-bottom uk-position-small">
+        <hr>
+        <a href="http://wa.me/{{$wa}}?text=kak, mau pesan Aplikasi fercova X5 yang big company bisa?" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:260px;"> Order Now</a>
+      </div>
      </div>
    </div>
+   
+  
 
  </div>
 </section>
 
 <div class="uk-width-auto@m uk-width-1-1 uk-padding uk-text-center uk-flex uk-flex-column uk-margin-large-top">
-  <h3 class="uk-text-bold uk-uppercase ">Do you want create a unique website ? </h3>
-  <p class="uk-align-center  uk-margin-remove-vertical" style="max-width:600px">If you don't want to use laxavel template, and you wanna have a unique website by customize based on your request. <b class="x-color-theme-text">Call Us</b>  We sure can do it for you. </b> </p>
-  <a href="#" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top uk-align-center  " style="width:210px;"> Call Us </a>
-
+  <h3 class="uk-text-bold uk-uppercase ">Do you want create customize application? </h3>
+  <p class="uk-align-center  uk-margin-remove-vertical" style="max-width:600px">If you need some customize applcation to your bussiness. <br> <b class="x-color-red-text">Call Us</b>  We sure can create it for you. </b> </p>
+  <a href="http://wa.me/{{$wa}}?text=kak, mau buat applikasi custome bisa?" title="Explore more" class="uk-button uk-align-center uk-button-default uk-margin-medium-top" style="width:260px;">Whatsapp Us</a>
 </div>
 
-<hr>
-
-  <section class="uk-text-center uk-container">
-    <div>
-      <h2 class="uk-text-bold uk-text-capitalize">Choose and get website your pride of</h2>
-      <p class="uk-align-center" style="max-width:550px">Thousands theme of laxavel ready to use, choose one <br>and  make it into your own.
-      </p>
-    </div>
-    <form id="form-search" method="GET" >
-    <div>
-     
-      <div class="uk-padding-remove-vertical">
-        <div class=" uk-flex uk-flex-middle uk-margin-medium-bottom">
-            <div class="uk-search uk-search-default uk-width-1-1">
-             
-              <button type="submit" class="uk-search-icon-flip" uk-search-icon></button>
-              <input id="keyword" name="keyword" class="uk-search-input uk-text-uppercase uk-text-center" type="search" placeholder="Check Availability of your domain in here " value="{{$keyword}}">
-           
-            </div>
-            
-        </div>
-
-        <ul id="x-grid" class="uk-flex uk-align-center  uk-grid uk-padding-remove uk-flex-center uk-grid-match uk-child-width-1-4@m uk-child-width-1-2" uk-grid>
-            
-              @php
-                  $x=1
-              @endphp
-              @for ($i = 1; $i < 25; $i++)
-               <div>
-                <li class="uk-card uk-card-hover uk-card-default x-cursor">
-                  <img data-src="{{asset('storage/uploads/page/layout_website/'.strval($x).'.jpg')}}" uk-img alt="" srcset="">
-                </li>
-              </div>
-                @php
-                   $x == 5 ? $x = 1 : $x++;
-                @endphp
-                
-              @endfor
-        </ul>
-  
-        <div class="uk-padding uk-padding-remove-vertical uk-grid-small uk-flex uk-flex-middle uk-text-center" uk-grid>
-          <div class="uk-width-auto">
-          
-              <select name="slc-paginate" id="slc-paginate" class="uk-select uk-form-small"  uk-tooltip="title: Count of dataview" style="width:60px">
-                <option value="12" {{ request()->paginate == 12 || request()->paginate == null ? 'selected' : ''}}>12</option>
-                <option value="24" {{ request()->paginate == 24  ? 'selected' : ''}}>24</option>
-                <option value="48" {{ request()->paginate == 48  ? 'selected' : ''}}>48</option>
-                <option value="96" {{ request()->paginate == 96  ? 'selected' : ''}}>96</option>
-              </select>
-          </div>
-
-          <div class="uk-width-expand">
-            
-            {{ $data->links() }}
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="canvas-category" uk-offcanvas="flip:true">
-      <div class="uk-padding-small uk-offcanvas-bar uk-box-shadow-small">
-        <button class="uk-offcanvas-close" type="button" uk-close></button>
-        <p class="uk-text-bold uk-padding-small uk-padding-remove-bottom uk-margin-small uk-text-uppercase">Category Product</p>
-        <div id="list-category" class=" uk-padding-small "></div>
-        {{-- <button class="uk-button uk-button-default uk-align-center" id="btn-submit-filter">Filter Product</button> --}}
-      </div>
-    </div>
-  </form>
-  </section>
-
-  <hr class="uk-container">
-    
-  <div class="uk-text-center uk-margin-medium-top">
-    <h2 class="uk-text-bold uk-text-capitalize">Our Website Clients</h2>
-    <p class="uk-align-center" style="max-width:370px">You can check our complete job for the website on our website clients in below.
-    </p>
-  </div>
-  <div class="uk-container uk-padding ">
-
-    <ul class="uk-child-width-1-6@m uk-child-width-1-3 uk-flex-center uk-grid uk-flex uk-flex-middle">
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/els.png')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/louise.png')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/jelajah.jpg')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/perumda.jpg')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/defurniture.png')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/nilamsari.png')}}" alt="" uk-img>
-      </li>
-      <li class="uk-padding uk-card uk-card-hover x-cursor">
-        <img data-src="{{asset('storage/uploads/page/clients/sugarpastry.jpg')}}" alt="" uk-img>
-      </li>
-    
-      
-    </ul>
-    
-  </div>
-  <hr>
-
-  <section class="uk-container uk-margin-large-top">
-     
-    <blockquote cite="#" class="uk-text-center uk-margin-xlarge uk-width-1-1">
-      <p class="uk-margin-small-bottom">"Do you want earn money from internet? Join in Our Affiliate partner"</p>
-    <footer>more information you can click this link <cite><a href="{{url('/')}}" class="x-color-theme-text uk-text-bold">Become Affiliate</a></cite></footer>
-    </blockquote>
-
-  </section>
 @endsection
 
 <script>

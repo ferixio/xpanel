@@ -26,16 +26,16 @@
 
 <section  id="top-banner" class="uk-background-norepeat uk-container uk-padding uk-background-center-left" style="background-image: url({{asset('storage/uploads/page/seo-optimation.jpg')}});min-height:80vh">
   <div class="uk-height-1-1 uk-flex uk-flex-column uk-width-1-2 uk-text-center uk-align-right uk-margin-xlarge-top uk-flex-center uk-visible@m">
-
+    <h1 class="uk-hidden">XIT foundation - jasa seo di daerah jepara</h1>
     <p class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">SEO Optimation</p>
     <p class="x-font-24" style="max-width:650px;">It's got everything from SEO analysis tool to keyword research tools to backlinks checkers to content editors to PPC ads optimization and much more.</p>
-    <a href="#" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top uk-align-center" style="width:170px;"> Explore More </a>
+    <a href="#seo" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top uk-align-center" style="width:170px;"> Explore More </a>
   </div>
 </section>
 
 <div class="uk-flex-center uk-flex uk-flex-column uk-padding  uk-text-center uk-hidden@m">
 
-  <p class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">SEO Optimation</p>
+  <p  class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">SEO Optimation</p>
   <p class="x-font-24" style="max-width:650px;">It's got everything from SEO analysis tool to keyword research tools to backlinks checkers to content editors to PPC ads optimization and much more.</p>
   <a href="#" title="Explore more" class="uk-button uk-align-center uk-button-default uk-margin-medium-top" style="width:170px;"> Explore More </a>
   <hr>
@@ -45,7 +45,7 @@
 
 <div class="uk-margin-xlarge uk-container" style="">
   <div class="uk-margin-large uk-text-center">
-    <h2 class="uk-text-capitalize uk-text-bold">What will we do ? </h2>
+    <h2 id="seo" class="uk-text-capitalize uk-text-bold">What will we do ? </h2>
     <p class="uk-align-center" style="max-width:550px">You've never tried to consult with us. Track keywords you want, <br> check positions in SERPs, see rankings for the exact location, and analyze the performance of your website.
     </p>
   </div>
@@ -173,7 +173,7 @@
 <div class="uk-width-auto@m uk-width-1-1 uk-padding uk-text-center uk-flex uk-flex-column uk-margin-large-top">
   <h3 class="uk-text-bold uk-uppercase ">Do you have questions about SEO ? </h3>
   <p class="uk-align-center  uk-margin-remove-vertical" style="max-width:600px">If you curious about how can your website on first page of search engine. <br><b class="x-color-theme-text">Consult Us</b>  We'll give some suggestion for you. </b> </p>
-  <a href="#" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top uk-align-center  " style="width:210px;"> Call Us to Consult </a>
+  <a href="http://wa.me/{{$wa}}?text=kak mau tanya masala SEO dong," target="_blank" title="whatsapp" class="uk-button uk-button-default uk-margin-medium-top uk-align-center  " style="width:250px;"> Chat Us to Consult </a>
 
 </div>
 
