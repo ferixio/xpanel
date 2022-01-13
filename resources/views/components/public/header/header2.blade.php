@@ -15,7 +15,7 @@
         </a>
       </li>
       <li>
-        <a href="{{ url('website') }}" class="menu uk-padding-small uk-flex uk-flex-column uk-flex-middle">
+        <a href="https://website.xitfoundation.com/" class="menu uk-padding-small uk-flex uk-flex-column uk-flex-middle">
           <span uk-icon="icon: world"></span>
           <p class="x-font-10 uk-margin-remove">Website</p>
         </a>
