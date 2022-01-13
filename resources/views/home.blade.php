@@ -17,7 +17,7 @@
     <section id="top-banner" class="uk-background-norepeat uk-background-bottom-right x-fullheight uk-text-left@m uk-text-center " style="background-image: url({{asset('storage/uploads/page/bg.png')}});max-height:700px">
       <div class="uk-container uk-height-1-1 uk-flex-center uk-flex uk-flex-column uk-padding uk-visible@m">
         <h1 class="uk-hidden">XIT foundation software and website developer </h1>
-        <p class="x-font-64 uk-text-capitalize uk-text-bold x-color-theme-public-text" style="line-height: 80px;">You Looking  for  <br>  a professional talent??</p>
+        <p class="x-font-64 uk-text-capitalize uk-text-bold x-color-theme-public-text" style="line-height: 80px;">You Looking  for  <br>  a professional talent?</p>
         <p class="x-font-24" style="max-width:650px;">We are here for you. Bringing innovation with technology, beautiful design and security system.</p>
         <a href="#offer" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:170px;"> Explore More </a>
       </div>
