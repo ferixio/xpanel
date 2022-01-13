@@ -36,9 +36,9 @@
   <p class="x-font-64 uk-text-capitalize uk-text-bold  x-color-red-text" style="line-height: 80px;">LAXAVEL</p>
   <p class="x-font-24" style="max-width:650px;">Stunning template website from XIT foundation. It's totally Simply and Crazy Fast website ever</p>
   
-  <div class="uk-flex uk-align-center">
+  <div class="uk-flex uk-align-center uk-flex-column">
     <a href="#pricelist" title="Explore more" class="uk-button uk-button-default uk-margin-medium-top" style="width:170px;"> Explore More </a>
-  <a href="http://furniture.xitfoundation.com" target="_blank" title="Explore more" class="uk-margin-small-left uk-button uk-button-tosca uk-margin-medium-top" style="width:170px;"> Demo </a>
+  <a href="http://furniture.xitfoundation.com" target="_blank" title="Explore more" class=" uk-button uk-button-tosca uk-margin-small-top" style="width:170px;"> Demo </a>
   </div>
   <hr>
 </div>

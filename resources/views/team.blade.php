@@ -11,7 +11,7 @@
   <p class="uk-align-center" style="max-width:550px">Show our amazing team, without all this guy XIT is nothing. <br> and we called our team is <b>HEXA</b>
   </p>
 
-  <div class="uk-grid uk-flex uk-flex-center uk-child-width-1-2 uk-child-width-1-4@m uk-grid-small">
+  <div class="uk-grid uk-flex uk-flex-center uk-child-width-1-1 uk-child-width-1-4@m uk-grid-small">
     
     <div class="uk-margin-medium-top">
       <div class="uk-card uk-card-hover uk-card-default uk-card-body">

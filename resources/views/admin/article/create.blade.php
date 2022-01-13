@@ -19,7 +19,7 @@
   @endphp
   
   <h4  class="uk-text-bold uk-margin-remove-top uk-text-capitalize" >{{ $edit == true ? 'Edit' : 'New'}} {{ $page_category }}</h4>
-  <form id="form-berita" enctype="multipart/form-data" accept-charset='utf-8-sig'>
+  <form id="form-berita" enctype="multipart/form-data" accept-charset='utf-8-sig' class="uk-form-stacked">
       @csrf
       <input type="hidden" name="id" value="{{ $edit == true ?  $content['id'] : ''}}">
       <div class="dropzone uk-margin-small"> 
@@ -30,12 +30,18 @@
           
           
       </div>
+
+      <div class="uk-margin-small-top">
+        <label for="" class=" x-font-12">Enter {{ $page_category == 'article' ? 'title of article ' : ' name of product ' }}</label>
       <input type="text" class="uk-input" id="title" name="title" placeholder="Enter {{ $page_category == 'article' ? 'title of article ' : ' name of product ' }} in here"  required value="{{ $edit == true ?  $content['title'] : ''}}">
       <p id="err-title" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('title'){{$message}}@enderror</p>
+      </div>
       
-     
-      <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Enter short description in here" >{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
-      <p id="err-short_description" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('short_description'){{$message}}@enderror</p>
+      <div class="uk-margin-small-top">
+        <label for="" class=" x-font-12">Enter Short description ( max. 160 caracter)</label>
+        <textarea name="short_description" id="short_description"  class="uk-width-1-1 uk-padding-small"  rows="3"  class="uk-placeholder"  placeholder="Enter short description in here" maxlength="160">{{ $edit == true ?  $content['short_description'] : ''}}</textarea>
+        <p id="err-short_description" class="x-font-12 x-nomargin uk-text-danger  x-error">@error('short_description'){{$message}}@enderror</p>
+      </div>
       
       <label for="" class=" x-font-12">Write full description of {{ $page_category}} in below</label>
       <div  id="summernote"></div>
@@ -60,7 +66,7 @@
       <div class="uk-child-width-1-2@m uk-grid-small uk-padding-small" uk-grid>
         <div>
           <div class="uk-width-1-1 uk-child-widt-1-1 uk-margin-small x-font-14">
-            <div class="x-font-12 uk-margin-small-bottom">Choose category</div>
+            <div class="x-font-12 uk-margin-small-bottom">Choose Category</div>
             <div class="uk-box-shadow-small uk-margin-remove uk-overflow-auto" style="height:300px !important;">
               <div id="list-category" class=" uk-padding-small "></div>
             </div>

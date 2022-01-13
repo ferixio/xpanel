@@ -29,33 +29,36 @@ if (Request::segment(2) == 'product') {
     </div>
 </div>
 
-<div id="x-grid" class="uk-flex uk-child-width-1-1 uk-grid-small uk-padding uk-grid-match" uk-grid>
+<div id="x-grid" class="uk-flex uk-child-width-1-1 uk-grid-small uk-grid-match" uk-grid>
 
     @forelse ($data as $content)
-        <div>
-          <div class="x-grid-item  uk-box-shadow-small x-list uk-flex uk-flex-middle  uk-transition-toggle uk-position-relative" tabindex="0">
+        <div >
+          <div class="uk-box-shadow-small   uk-transition-toggle uk-position-relative">
+            <div class="x-grid-item  uk-background-norepeat uk-background-cover x-list uk-flex uk-flex-middle" tabindex="0" style="min-height:180px;padding:15px !important;background-image:url({{ is_null($content['image_thumb']) || empty($content['image_thumb']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_thumb']) }})" uk-img>
             
-            <input type="checkbox" name="cek-{{ $content['id']}}" data_id="{{ $content['id']}}" data-class="cek-content" class="uk-position-top-left" style="margin: 10px 0 0 10px !important;">
-            <div  style="height:100px;width:100px;background-image:url({{ is_null($content['image_thumb']) || empty($content['image_thumb']) ? asset('images/photo.svg')  : asset('storage/'.$content['image_thumb']) }});background-size:cover;" class="uk-border-rounded uk-margin uk-width-auto"></div>
-
-            <div class="x-grid-desc uk-margin-medium-left  uk-width-expand">
-              <p class="uk-text-capitalize x-font-16 uk-width-expand uk-text-bold  uk-margin-remove"><a href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}">{{ $content['title']}} </a> <br> 
-                <span class="x-font-12">Dilihat {{number_format($content['viewer'])}} kali</span>
-              </p>
-              <p class="uk-text-meta x-font-12  uk-margin-remove "> 
-                <br>by <b>{{ $content['publisher']}} </b><br>
-                <span class="x-font-10">{{date_format(date_Create($content['created_at']),'d-M-Y H:i')}}</span> <br>               
-              
-              </p>
-
-                
+              <input type="checkbox" name="cek-{{ $content['id']}}" data_id="{{ $content['id']}}" data-class="cek-content" class="uk-position-top-left" style="margin: 10px 0 0 10px !important;">
             </div>
-            <ul class="x-grid-icon uk-iconnav uk-iconnav-vertical">
-              <li><a id="duplicate-{{ $content['id'] }}" class="btn-duplicate uk-transition-slide-right" uk-icon="icon: copy" uk-tooltip="title: Duplicate data" ></a></li>
-              <li><a class="btn-edit uk-transition-slide-right x-transition-delay-2" href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}" uk-icon="icon: file-edit" uk-tooltip="title: Edit data"></a></li>
-              <li><a class="btn-view uk-transition-slide-right x-transition-delay-4 x-icon-24 x-icon-eye" target="_blank"  href="{{ url('product/detail/'.$content['slug'].'?id='.$content['id']) }}" uk-tooltip="title: View on publish"></a></li>
-              <li><a id="{{ $content['id'] }}" class="btn-hapus uk-transition-slide-right x-transition-delay-6" href="#" uk-icon="icon: trash" uk-tooltip="title: Delete data"></a></li>
-            </ul>
+  
+            <div class="uk-position-relative uk-overflow-hidden">
+              <div class="x-grid-desc uk-margin-medium-left  uk-width-expand uk-padding-small">
+                <p class="uk-text-capitalize x-font-14 uk-width-expand uk-margin-remove"><a class="uk-text-bold" href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}" style="max-height:40px !important;display:block;overflow:hidden">{{ $content['title']}} </a> <br> 
+                  <span class="x-font-12">Dilihat {{number_format($content['viewer'])}} kali</span>
+                </p>
+                {{-- <p class="uk-text-meta x-font-12  uk-margin-remove "> 
+                  <br>by <b>{{ $content['publisher']}} </b><br>
+                  <span class="x-font-10">{{date_format(date_Create($content['created_at']),'d-M-Y H:i')}}</span> <br>               
+                
+                </p> --}}
+    
+                  
+              </div>
+              <ul class="x-grid-icon uk-iconnav uk-iconnav-vertical uk-position-cover uk-transition-fade uk-background-default  uk-flex uk-flex-center uk-flex-middle">
+                <li><a id="duplicate-{{ $content['id'] }}" class="btn-duplicate uk-transition-slide-right" uk-icon="icon: copy" uk-tooltip="title: Duplicate data" ></a></li>
+                <li><a class="btn-edit uk-transition-slide-right x-transition-delay-2" href="{{ url('xpanel/'.$page_category.'/'.$content['id'].'/edit') }}" uk-icon="icon: file-edit" uk-tooltip="title: Edit data"></a></li>
+                <li><a class="btn-view uk-transition-slide-right x-transition-delay-4 x-icon-24 x-icon-eye" target="_blank"  href="{{ url('product/detail/'.$content['slug'].'?id='.$content['id']) }}" uk-tooltip="title: View on publish"></a></li>
+                <li><a id="{{ $content['id'] }}" class="btn-hapus uk-transition-slide-right x-transition-delay-4" href="#" uk-icon="icon: trash" uk-tooltip="title: Delete data"></a></li>
+              </ul>
+            </div>
           </div>
         </div>
     @empty

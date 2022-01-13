@@ -88,7 +88,7 @@
             <div id="content" class="uk-width-expand" >
                 <x-topnav />
                 <section id="content-area">
-                   <div class="uk-padding-small uk-container">
+                   <div class="uk-padding-small uk-container" style="max-width:900px">
                     @yield('content')
                    </div>
                    <x-footer />
